@@ -3,13 +3,16 @@
 <hibernate-configuration>
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property >
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/quanlyhocsinh</property>
     <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password"></property>
+    <property name="hibernate.connection.password"/>
     <property name="hibernate.current_session_context_class">thread</property>
     <property name="hibernate.transaction.flush_before_completion">False</property>
     <mapping resource="Entity/TaiKhoan.hbm.xml"/>
-    <mapping class="Entity.TaiKhoan"/>
+<!--    <mapping resource="Entity/PhanQuyen.hbm.xml"/>-->
+    
+    <mapping class="Entity.TaiKhoan"/>  
+<!--    <mapping class="Entity.PhanQuyen"/>-->
   </session-factory>
 </hibernate-configuration>

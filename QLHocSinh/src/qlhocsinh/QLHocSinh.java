@@ -5,7 +5,9 @@
  */
 package qlhocsinh;
 
+import DAO.PhanQuyenDAO;
 import DAO.TaiKhoanDAO;
+import Entity.PhanQuyen;
 import Entity.TaiKhoan;
 import java.util.List;
 
@@ -20,11 +22,18 @@ public class QLHocSinh {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        //Tai khoản
         List<TaiKhoan> dsTaiKhoan = TaiKhoanDAO.layDanhSachTaiKhoan();
         for (int i = 0; i < dsTaiKhoan.size(); i++) {
             System.out.println("user: " + dsTaiKhoan.get(i).gettentaikhoan()
             + " - matkhau: " + dsTaiKhoan.get(i).getmatkhau());
         }
+        // Phân quyền       
+//         List<PhanQuyen> dsPhanQuyen = PhanQuyenDAO.layDanhSachPhanQuyen();
+//        for (int i = 0; i < dsPhanQuyen.size(); i++) {
+//            System.out.println("user: " + dsPhanQuyen.get(i).gettenchucvu());
+//        }
+        
     }
     
 }
