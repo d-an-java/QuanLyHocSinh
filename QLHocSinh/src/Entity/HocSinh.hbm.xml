@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+   <class name="Entity.HocSinh" table="hocsinh" >
+        <id name="id" type="int">
+        <column name="id" length="11" />
+        <generator class="assigned" />
+        </id>
+        <property name="ten" type="string">
+        <column name="ten" length="255" />
+        </property>  
+        <property name="ngaysinh" type="string">
+        <column name="ngaysinh" length="255" />
+        </property> 
+        <property name="gioitinh" type="string">
+        <column name="gioitinh" length="255" />
+        </property> 
+         <property name="diachi" type="string">
+        <column name="diachi" length="255" />
+        </property> 
+         <property name="email" type="string">
+        <column name="email" length="255" />
+        </property>
+          <property name="lop" type="string">
+        <column name="lop" length="255" />
+        </property>
+          <property name="mahocsinh" type="string">
+        <column name="mahocsinh" length="255" />
+        </property>
+    </class>
+
+</hibernate-mapping>

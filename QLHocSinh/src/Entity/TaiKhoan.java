@@ -16,11 +16,18 @@ public class TaiKhoan implements java.io.Serializable{
     private String matkhau;
     private int chucvu;
     //Các phương thức khởi tạo, get, set.
-     public void setid(Integer id ) {
+     public TaiKhoan() {
+        this.id = 0;
+        this.tentaikhoan = "";
+        this.matkhau = "";
+        this.chucvu = 0;
+    }
+    
+     public void setid(int id ) {
         this.id = id;
     }
 
-    public Integer getid() {
+    public int getid() {
         return id;
     }
     
@@ -40,11 +47,11 @@ public class TaiKhoan implements java.io.Serializable{
         return matkhau;
     }
     
-         public void setchucvu(Integer chucvu ) {
+    public void setchucvu(int chucvu ) {
         this.chucvu = chucvu;
     }
 
-    public Integer getchucvu() {
+    public int getchucvu() {
         return chucvu;
     }
 }

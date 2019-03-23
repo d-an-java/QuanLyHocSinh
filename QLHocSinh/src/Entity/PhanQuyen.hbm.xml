@@ -6,13 +6,13 @@
 
 <hibernate-mapping>
 
-   <class name="Entity.PhanQuyen" table="phanquyen" catalog="quanlyhocsinh">
+   <class name="Entity.PhanQuyen" table="phanquyen" >
         <id name="id" type="int">
         <column name="id" length="11" />
         <generator class="assigned" />
         </id>
-        <property name="chucvu" type="string">
-        <column name="chucvu" length="255" />
+        <property name="tenchucvu" type="string">
+        <column name="tenchucvu" length="255" />
         </property>       
     </class>
 

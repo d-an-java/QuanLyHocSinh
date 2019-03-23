@@ -5,7 +5,7 @@
   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="Entity.TaiKhoan" table="taikhoan" catalog="quanlyhocsinh">
+    <class name="Entity.TaiKhoan" table="taikhoan" >
         <id name="id" type="int">
         <column name="id" length="11" />
         <generator class="assigned" />

@@ -11,22 +11,26 @@ package Entity;
  */
 public class PhanQuyen implements java.io.Serializable{
     private int id;
-    private String chucvu;
+    private String tenchucvu;
 
     //Các phương thức khởi tạo, get, set.
-     public void setid(Integer id ) {
+    public PhanQuyen() {
+        this.id = 0;
+        this.tenchucvu = "";
+    }
+    public void setid(int id ) {
         this.id = id;
     }
 
-    public Integer getid() {
+    public int getid() {
         return id;
     }
     
     public void settenchucvu(String tenchucvu ) {
-        this.chucvu = tenchucvu;
+        this.tenchucvu = tenchucvu;
     }
 
     public String gettenchucvu() {
-        return chucvu;
+        return tenchucvu;
     }
 }

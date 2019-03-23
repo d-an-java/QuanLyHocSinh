@@ -10,9 +10,11 @@
     <property name="hibernate.current_session_context_class">thread</property>
     <property name="hibernate.transaction.flush_before_completion">False</property>
     <mapping resource="Entity/TaiKhoan.hbm.xml"/>
-<!--    <mapping resource="Entity/PhanQuyen.hbm.xml"/>-->
-    
-    <mapping class="Entity.TaiKhoan"/>  
-<!--    <mapping class="Entity.PhanQuyen"/>-->
+    <mapping resource="Entity/PhanQuyen.hbm.xml"/>
+    <!--    <mapping class="Entity.TaiKhoan"/>
+    <mapping class="Entity.PhanQuyen"/>-->
+    <mapping resource="Entity/Mon.hbm.xml"/>
+    <mapping resource="Entity/Lop.hbm.xml"/>
+    <mapping resource="Entity/HocSinh.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
