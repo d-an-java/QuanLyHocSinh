@@ -5,11 +5,15 @@
  */
 package qlhocsinh;
 
+import DAO.DiemDAO;
+import DAO.HocKyDAO;
 import DAO.HocSinhDAO;
 import DAO.LopDAO;
 import DAO.MonDAO;
 import DAO.PhanQuyenDAO;
 import DAO.TaiKhoanDAO;
+import Entity.Diem;
+import Entity.HocKy;
 import Entity.HocSinh;
 import Entity.Lop;
 import Entity.Mon;
@@ -34,7 +38,15 @@ public class QLHocSinh {
             System.out.println("taikhoan-user: " + dsTaiKhoan.get(i).gettentaikhoan()
             + " - matkhau: " + dsTaiKhoan.get(i).getmatkhau());
         }
+        //đăng nhạp
         
+        int loai =  TaiKhoanDAO.DangNhap("Nhayhuy", "123456");
+        if(loai == 1 )
+            System.out.println("tk giao vien");
+        else if(loai == 2)
+            System.out.println("tk giao vu");
+        else
+            System.out.println("sai tai khoản hoạc mk ?");
         // Phân quyền       
          List<PhanQuyen> dsPhanQuyen = PhanQuyenDAO.layDanhSachPhanQuyen();
         for (int i = 0; i < dsPhanQuyen.size(); i++) {
@@ -57,6 +69,25 @@ public class QLHocSinh {
         List<HocSinh> dsHocSinh = HocSinhDAO.layDanhSachHocSinh();
         for (int i = 0; i < dsHocSinh.size(); i++) {
             System.out.println(" HocSinh - ten: " + dsHocSinh.get(i).getten());
+        }
+        
+        List<HocSinh> hs = HocSinhDAO.layThongTinHocSinh("1910101");
+        for (int i = 0; i < dsHocSinh.size(); i++) {
+            System.out.println("Họ tên: " + hs.get(i).getten());
+            System.out.println("Email: " + hs.get(i).getemail());
+            System.out.println("địa chỉ : " + hs.get(i).getdiachi());
+        }        
+        
+         // HocKy     
+        List<HocKy> dsHocKy = HocKyDAO.layDanhSachHocKy();
+        for (int i = 0; i < dsHocKy.size(); i++) {
+            System.out.println(" HocKy - ten: " + dsHocKy.get(i).gettenhocky());
+        }
+        
+          // Diem     
+        List<Diem> dsDiem = DiemDAO.layDanhSachDiem();
+        for (int i = 0; i < dsDiem.size(); i++) {
+            System.out.println(" Diem - ten: " + dsDiem.get(i).getdiem());
         }
     }
     

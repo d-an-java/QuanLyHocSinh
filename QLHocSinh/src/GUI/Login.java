@@ -2,6 +2,7 @@ package GUI;
 
 
 
+import DAO.TaiKhoanDAO;
 import java.awt.Color;
 import java.awt.Image;
 import java.sql.Connection;
@@ -123,7 +124,13 @@ public class Login extends javax.swing.JFrame {
 
 	    private void bntloginActionPerformed(java.awt.event.ActionEvent evt) {                                         
 	        // TODO add your handling code here:
-	       
+	       int loai =  TaiKhoanDAO.DangNhap(txtUse.getText(), txtpass.getText());
+                if(loai == 1 )
+                    System.out.println("tk giao vien");
+                else if(loai == 2)
+                    System.out.println("tk giao vu");
+                else
+                    System.out.println("sai tai khoản hoạc mk ?");
 	    }                                        
 
 	    

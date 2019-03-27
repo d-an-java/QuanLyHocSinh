@@ -11,7 +11,7 @@
  Target Server Version : 100138
  File Encoding         : 65001
 
- Date: 22/03/2019 22:47:12
+ Date: 27/03/2019 13:59:54
 */
 
 SET NAMES utf8mb4;
@@ -26,8 +26,9 @@ CREATE TABLE `diem`  (
   `mamonhoc` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `hesodiemid` int(11) UNSIGNED NOT NULL,
   `hockyid` int(11) UNSIGNED NOT NULL,
-  `diem` decimal(10, 0) NOT NULL,
-  PRIMARY KEY (`mahocsinh`, `mamonhoc`, `hesodiemid`, `hockyid`) USING BTREE,
+  `diem` float(10, 2) NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`) USING BTREE,
   INDEX `mahocsinh`(`mahocsinh`) USING BTREE,
   INDEX `mamonhoc`(`mamonhoc`) USING BTREE,
   INDEX `hesodiemid`(`hesodiemid`) USING BTREE,
@@ -36,12 +37,12 @@ CREATE TABLE `diem`  (
   CONSTRAINT `diem_ibfk_2` FOREIGN KEY (`mamonhoc`) REFERENCES `mon` (`mamon`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `diem_ibfk_3` FOREIGN KEY (`hesodiemid`) REFERENCES `hesodiem` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `diem_ibfk_4` FOREIGN KEY (`hockyid`) REFERENCES `hocky` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of diem
 -- ----------------------------
-INSERT INTO `diem` VALUES ('1910101', 'toan10', 1, 2, 9);
+INSERT INTO `diem` VALUES ('1910101', 'toan10', 2, 2, 9.50, 3);
 
 -- ----------------------------
 -- Table structure for hesodiem
@@ -87,18 +88,18 @@ CREATE TABLE `hocsinh`  (
   `gioitinh` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `diachi` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `lop` int(11) UNSIGNED NOT NULL,
+  `lop` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `mahocsinh` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `lop`(`lop`) USING BTREE,
   INDEX `mahocsinh`(`mahocsinh`) USING BTREE,
-  CONSTRAINT `hocsinh_ibfk_1` FOREIGN KEY (`lop`) REFERENCES `lop` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+  CONSTRAINT `hocsinh_ibfk_1` FOREIGN KEY (`lop`) REFERENCES `lop` (`malop`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of hocsinh
 -- ----------------------------
-INSERT INTO `hocsinh` VALUES (1, 'Ngô Nhật Huy', '25/08/1995', 'Nam', 'Quận 12', 'nhathuy@gmail.com', 1, '1910101');
+INSERT INTO `hocsinh` VALUES (2, 'Ngô Nhật Huy', '30/08/1995', 'Nam', 'Quận 12', 'Huy@gmail.com', '10a1', '1910101');
 
 -- ----------------------------
 -- Table structure for khoi
@@ -129,6 +130,7 @@ CREATE TABLE `lop`  (
   `malop` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `khoi`(`khoi`) USING BTREE,
+  INDEX `malop`(`malop`) USING BTREE,
   CONSTRAINT `lop_ibfk_1` FOREIGN KEY (`khoi`) REFERENCES `khoi` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
@@ -162,7 +164,7 @@ INSERT INTO `mon` VALUES (1, 'Toán', '10', 'toan10');
 DROP TABLE IF EXISTS `phanquyen`;
 CREATE TABLE `phanquyen`  (
   `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `chucvu` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `tenchucvu` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
@@ -189,7 +191,7 @@ CREATE TABLE `taikhoan`  (
 -- ----------------------------
 -- Records of taikhoan
 -- ----------------------------
-INSERT INTO `taikhoan` VALUES (2, 'Nhayhuy', '12364', 1);
-INSERT INTO `taikhoan` VALUES (3, '1742029', '123456', 2);
+INSERT INTO `taikhoan` VALUES (2, 'Nhayhuy', 'e10adc3949ba59abbe56e057f20f883e', 1);
+INSERT INTO `taikhoan` VALUES (3, '1742029', 'e10adc3949ba59abbe56e057f20f883e', 2);
 
 SET FOREIGN_KEY_CHECKS = 1;

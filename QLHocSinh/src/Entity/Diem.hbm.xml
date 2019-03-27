@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+   <class name="Entity.Diem" table="diem" >
+        <id name="id" type="int">
+        <column name="id" length="11" />
+        <generator class="assigned" />
+        </id>
+        <property name="mahocsinh" type="string">
+        <column name="mahocsinh" length="255" />
+        </property>  
+        <property name="mamonhoc" type="string">
+        <column name="mamonhoc" length="255" />
+        </property> 
+        <property name="hesodiemid" type="int">
+        <column name="hesodiemid" length="11" />
+        </property> 
+         <property name="hockyid" type="int">
+        <column name="hockyid" length="11" />
+        </property> 
+         <property name="diem" type="float">
+        <column name="diem" length="10" />
+        </property>
+    </class>
+
+</hibernate-mapping>
