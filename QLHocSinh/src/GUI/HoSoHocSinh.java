@@ -46,8 +46,11 @@ public class HoSoHocSinh extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
+        jButton5 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(153, 255, 204));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jTable1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -76,15 +79,15 @@ public class HoSoHocSinh extends javax.swing.JFrame {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 12;
-        gridBagConstraints.gridwidth = 15;
+        gridBagConstraints.gridy = 14;
+        gridBagConstraints.gridwidth = 19;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 701;
-        gridBagConstraints.ipady = 132;
+        gridBagConstraints.ipadx = 739;
+        gridBagConstraints.ipady = 152;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(18, 0, 11, 0);
+        gridBagConstraints.insets = new java.awt.Insets(18, 0, 0, 10);
         getContentPane().add(jScrollPane1, gridBagConstraints);
 
         jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.LINE_AXIS));
@@ -108,7 +111,7 @@ public class HoSoHocSinh extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridy = 13;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(18, 70, 0, 0);
@@ -123,7 +126,7 @@ public class HoSoHocSinh extends javax.swing.JFrame {
         jButton3.setPreferredSize(new java.awt.Dimension(95, 23));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridy = 13;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -138,9 +141,9 @@ public class HoSoHocSinh extends javax.swing.JFrame {
         jButton2.setMinimumSize(new java.awt.Dimension(95, 23));
         jButton2.setPreferredSize(new java.awt.Dimension(95, 23));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 7;
-        gridBagConstraints.gridy = 11;
-        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 13;
+        gridBagConstraints.gridwidth = 9;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(18, 9, 0, 0);
@@ -153,8 +156,8 @@ public class HoSoHocSinh extends javax.swing.JFrame {
         jButton4.setMinimumSize(new java.awt.Dimension(95, 23));
         jButton4.setPreferredSize(new java.awt.Dimension(95, 23));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 13;
-        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridx = 17;
+        gridBagConstraints.gridy = 13;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(18, 70, 0, 0);
@@ -164,32 +167,32 @@ public class HoSoHocSinh extends javax.swing.JFrame {
         jLabel1.setText("Họ và tên");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 6;
         gridBagConstraints.ipady = 9;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(22, 126, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(29, 126, 0, 0);
         getContentPane().add(jLabel1, gridBagConstraints);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Giới tính");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 15;
         gridBagConstraints.ipady = 9;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 126, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(17, 126, 0, 0);
         getContentPane().add(jLabel2, gridBagConstraints);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Ngày sinh");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 7;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 7;
@@ -202,7 +205,7 @@ public class HoSoHocSinh extends javax.swing.JFrame {
         jLabel4.setText("Địa chỉ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridy = 9;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 26;
@@ -215,7 +218,7 @@ public class HoSoHocSinh extends javax.swing.JFrame {
         jLabel5.setText("Email");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridy = 11;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 35;
@@ -227,18 +230,18 @@ public class HoSoHocSinh extends javax.swing.JFrame {
         jTextField1.setText(" ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 6;
         gridBagConstraints.ipadx = 214;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(25, 18, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(32, 18, 0, 0);
         getContentPane().add(jTextField1, gridBagConstraints);
 
         jTextField2.setText(" ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 6;
         gridBagConstraints.ipadx = 214;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(21, 18, 0, 0);
@@ -247,8 +250,8 @@ public class HoSoHocSinh extends javax.swing.JFrame {
         jTextField3.setText(" ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridwidth = 6;
         gridBagConstraints.ipadx = 214;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(21, 18, 0, 0);
@@ -257,8 +260,8 @@ public class HoSoHocSinh extends javax.swing.JFrame {
         jTextField4.setText(" ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 9;
-        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridwidth = 6;
         gridBagConstraints.ipadx = 214;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(21, 18, 0, 0);
@@ -267,23 +270,50 @@ public class HoSoHocSinh extends javax.swing.JFrame {
         jRadioButton1.setText("Nam ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 34;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 18, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(19, 18, 0, 0);
         getContentPane().add(jRadioButton1, gridBagConstraints);
 
         jRadioButton2.setText("Nữ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 41;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 18, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(19, 18, 0, 0);
         getContentPane().add(jRadioButton2, gridBagConstraints);
+
+        jButton5.setBackground(new java.awt.Color(255, 0, 0));
+        jButton5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton5.setText("Giáo Vụ");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 18;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.ipady = 16;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(22, 23, 0, 10);
+        getContentPane().add(jButton5, gridBagConstraints);
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setText("HỒ SƠ HỌC SINH");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 10, 0, 0);
+        getContentPane().add(jLabel6, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -291,6 +321,10 @@ public class HoSoHocSinh extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -332,11 +366,13 @@ public class HoSoHocSinh extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
