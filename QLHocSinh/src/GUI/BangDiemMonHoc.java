@@ -28,14 +28,14 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<String>();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<String>();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
@@ -49,9 +49,10 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Bảng Điểm Môn Học");
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 204));
         jPanel1.setLayout(new java.awt.GridBagLayout());
@@ -109,7 +110,7 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         jPanel1.add(jRadioButton2, gridBagConstraints);
 
         jComboBox2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MÔN HỌC", "TOÁN HỌC", "VẬT LÝ", "HÓA HỌC", "SINH HỌC", "LỊCH SỬ", "ĐỊA LÝ", "VĂN HỌC", "ĐẠO ĐỨC", "THỂ DỤC" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MÔN HỌC", "TOÁN HỌC", "VẬT LÝ", "HÓA HỌC", "SINH HỌC", "LỊCH SỬ", "ĐỊA LÝ", "VĂN HỌC", "ĐẠO ĐỨC", "THỂ DỤC" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
@@ -121,7 +122,6 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(255, 102, 0));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Vinh\\Desktop\\New folder (2)\\New folder (2)\\QuanLyHocSinh\\QLHocSinh\\src\\Icon\\btn_search.png")); // NOI18N
         jButton1.setText("TÌM");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -279,6 +279,7 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed

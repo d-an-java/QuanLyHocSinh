@@ -5,6 +5,13 @@
  */
 package GUI;
 
+import DAO.HocSinhDAO;
+import Entity.HocSinh;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Vinh
@@ -16,6 +23,7 @@ public class HoSoHocSinh extends javax.swing.JFrame {
      */
     public HoSoHocSinh() {
         initComponents();
+        LoadData();
     }
 
     /**
@@ -28,7 +36,7 @@ public class HoSoHocSinh extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtb_hocsinh = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -47,12 +55,14 @@ public class HoSoHocSinh extends javax.swing.JFrame {
         jRadioButton2 = new javax.swing.JRadioButton();
         jButton5 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        jbtn_thoat = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Hồ Sơ Học Sinh");
         setBackground(new java.awt.Color(153, 255, 204));
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtb_hocsinh.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jtb_hocsinh.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -71,9 +81,9 @@ public class HoSoHocSinh extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jTable1.setColumnSelectionAllowed(true);
-        jScrollPane1.setViewportView(jTable1);
-        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jtb_hocsinh.setColumnSelectionAllowed(true);
+        jScrollPane1.setViewportView(jtb_hocsinh);
+        jtb_hocsinh.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.LINE_AXIS));
 
@@ -149,6 +159,19 @@ public class HoSoHocSinh extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("HỒ SƠ HỌC SINH");
 
+        jbtn_thoat.setBackground(new java.awt.Color(255, 102, 0));
+        jbtn_thoat.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jbtn_thoat.setText("Thoát");
+        jbtn_thoat.setToolTipText("");
+        jbtn_thoat.setMaximumSize(new java.awt.Dimension(95, 23));
+        jbtn_thoat.setMinimumSize(new java.awt.Dimension(95, 23));
+        jbtn_thoat.setPreferredSize(new java.awt.Dimension(95, 23));
+        jbtn_thoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_thoatActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -194,7 +217,9 @@ public class HoSoHocSinh extends javax.swing.JFrame {
                 .addGap(70, 70, 70)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(70, 70, 70)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jbtn_thoat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 774, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
@@ -243,21 +268,82 @@ public class HoSoHocSinh extends javax.swing.JFrame {
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtn_thoat, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+      void LoadData() {
+        List<HocSinh> listResultSV;
+        String[] columns = new String [] {
+            "Tên Sinh Viên",
+            "Năm sinh",
+            "Email",
+            "Điện thoại",
+            "Địa chỉ"
+        };
+        DefaultTableModel model = new DefaultTableModel(null , columns);
+        
+        listResultSV = HocSinhDAO.layDanhSachHocSinh();
+        
+        for (int i = 0; i < listResultSV.size(); i++) {
+            HocSinh sv = (HocSinh) listResultSV.get(i);
+            
+            Object[] items = new Object[] {
+                sv.getten(),
+                sv.getngaysinh(),
+                sv.getgioitinh(),
+                sv.getemail(),
+                sv.getdiachi()
+            };
+            model.addRow(items);  
+        }
+        jtb_hocsinh.setModel(model);
+        jtb_hocsinh.setRowHeight(30);
+        jtb_hocsinh.getColumnModel().getColumn(0).setPreferredWidth(200);
+        jtb_hocsinh.getColumnModel().getColumn(1).setPreferredWidth(400);
+        jtb_hocsinh.getColumnModel().getColumn(2).setPreferredWidth(200);
+        jtb_hocsinh.getColumnModel().getColumn(3).setPreferredWidth(200);
+        jtb_hocsinh.getColumnModel().getColumn(4).setPreferredWidth(200);
+   
+    }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+//        String mssv = txtMSSV.getText();
+//        String hoTen = txtTen.getText();
+//        String mk = txtMatKhau.getText();
+//        String email = txtEmail.getText();
+//        String dt = txtDT.getText();
+//        String dc = txtDC.getText();
+//        mk = MD5Library.md5(mk);
+//        String namSinh = new SimpleDateFormat("yyyy-MM-dd").format(txtNgaySinh.getDate());
+//
+//        Sinhvien sv = new Sinhvien(mssv, mk, hoTen, namSinh, email, dt, dc);
+//        boolean result = SinhVienDAO.themSinhVien(sv);
+//        if (result) {
+//            JOptionPane.showMessageDialog(this, "Thêm sinh viên thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+//            this.CloseForm();
+//        } else {
+//            JOptionPane.showMessageDialog(this, "Thêm thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
+//        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jbtn_thoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_thoatActionPerformed
+        // TODO add your handling code here:
+        setVisible(false); //you can't see me!
+        dispose();
+    }//GEN-LAST:event_jbtn_thoatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -290,6 +376,19 @@ public class HoSoHocSinh extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new HoSoHocSinh().setVisible(true);
+                  // HocSinh     
+                List<HocSinh> dsHocSinh = HocSinhDAO.layDanhSachHocSinh();
+                for (int i = 0; i < dsHocSinh.size(); i++) {
+                    System.out.println(" HocSinh - ten: " + dsHocSinh.get(i).getten());
+                }
+
+                List<HocSinh> hs = HocSinhDAO.layThongTinHocSinh("1910101");
+                for (int i = 0; i < dsHocSinh.size(); i++) {
+                    System.out.println("Họ tên: " + hs.get(i).getten());
+                    System.out.println("Email: " + hs.get(i).getemail());
+                    System.out.println("địa chỉ : " + hs.get(i).getdiachi());
+                }        
+        
             }
         });
     }
@@ -310,10 +409,11 @@ public class HoSoHocSinh extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JButton jbtn_thoat;
+    private javax.swing.JTable jtb_hocsinh;
     // End of variables declaration//GEN-END:variables
 }

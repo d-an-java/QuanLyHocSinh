@@ -46,7 +46,8 @@ public class DanhSachLop extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Danh Sách Lớp");
 
         jTable1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -184,7 +185,6 @@ public class DanhSachLop extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(255, 102, 0));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Vinh\\Desktop\\New folder (2)\\New folder (2)\\QuanLyHocSinh\\QLHocSinh\\src\\Icon\\btn_add.png")); // NOI18N
         jButton2.setText("THÊM");
         jButton2.setMaximumSize(new java.awt.Dimension(95, 23));
         jButton2.setMinimumSize(new java.awt.Dimension(95, 23));
@@ -205,7 +205,6 @@ public class DanhSachLop extends javax.swing.JFrame {
 
         jButton3.setBackground(new java.awt.Color(255, 102, 0));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Vinh\\Desktop\\New folder (2)\\New folder (2)\\QuanLyHocSinh\\QLHocSinh\\src\\Icon\\btn_delete.png")); // NOI18N
         jButton3.setText("XÓA");
         jButton3.setMaximumSize(new java.awt.Dimension(95, 23));
         jButton3.setMinimumSize(new java.awt.Dimension(95, 23));
@@ -221,7 +220,6 @@ public class DanhSachLop extends javax.swing.JFrame {
 
         jButton4.setBackground(new java.awt.Color(255, 102, 0));
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Vinh\\Desktop\\New folder (2)\\New folder (2)\\QuanLyHocSinh\\QLHocSinh\\src\\Icon\\btn_save.png")); // NOI18N
         jButton4.setText("SỬA");
         jButton4.setMaximumSize(new java.awt.Dimension(95, 23));
         jButton4.setMinimumSize(new java.awt.Dimension(95, 23));
@@ -269,6 +267,7 @@ public class DanhSachLop extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

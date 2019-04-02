@@ -113,8 +113,9 @@ public class Login extends javax.swing.JFrame {
 	        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
 	        gridBagConstraints.insets = new java.awt.Insets(34, 30, 0, 27);
 	        getContentPane().add(txtpass, gridBagConstraints);
-
-	        pack();
+                pack();     
+                setLocationRelativeTo(null);
+//	        setVisible(true);
 	    }// </editor-fold>                        
 
 	    private void bntcancelActionPerformed(java.awt.event.ActionEvent evt) {                                          
@@ -126,7 +127,18 @@ public class Login extends javax.swing.JFrame {
 	        // TODO add your handling code here:
 	       int loai =  TaiKhoanDAO.DangNhap(txtUse.getText(), txtpass.getText());
                 if(loai == 1 )
+                {
                     System.out.println("tk giao vien");
+//                    TrangChu ct = new TrangChu();
+//                    ct.setLocationRelativeTo(null);
+//                    ct.setVisible(true);
+                    this.dispose();
+                    java.awt.EventQueue.invokeLater(new Runnable() {
+                        public void run() {
+                            new TrangChu().setVisible(true);
+                        }
+                    });
+                }                
                 else if(loai == 2)
                     System.out.println("tk giao vu");
                 else

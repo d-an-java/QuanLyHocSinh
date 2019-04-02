@@ -29,25 +29,26 @@ public class TrangChu extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         TRANGCHU = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        jbtn_hosohocsinh = new javax.swing.JButton();
+        jbtn_danhsachlop = new javax.swing.JButton();
+        jbtn_danhsachhocsinh = new javax.swing.JButton();
+        jbtn_bangdiemmonhoc = new javax.swing.JButton();
+        jbtn_baocaotongketmon = new javax.swing.JButton();
+        jbtn_baocaotongkethocky = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Trang Chủ");
 
         TRANGCHU.setBackground(new java.awt.Color(153, 255, 255));
         TRANGCHU.setToolTipText("TRANG CHỦ");
         TRANGCHU.setLayout(new java.awt.GridBagLayout());
 
-        jButton3.setBackground(new java.awt.Color(255, 102, 0));
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton3.setText("HỒ SƠ HỌC SINH");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jbtn_hosohocsinh.setBackground(new java.awt.Color(255, 102, 0));
+        jbtn_hosohocsinh.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jbtn_hosohocsinh.setText("HỒ SƠ HỌC SINH");
+        jbtn_hosohocsinh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jbtn_hosohocsinhActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -57,11 +58,16 @@ public class TrangChu extends javax.swing.JFrame {
         gridBagConstraints.ipady = 66;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(71, 54, 0, 0);
-        TRANGCHU.add(jButton3, gridBagConstraints);
+        TRANGCHU.add(jbtn_hosohocsinh, gridBagConstraints);
 
-        jButton1.setBackground(new java.awt.Color(255, 102, 0));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setText("DANH SÁCH LỚP");
+        jbtn_danhsachlop.setBackground(new java.awt.Color(255, 102, 0));
+        jbtn_danhsachlop.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jbtn_danhsachlop.setText("DANH SÁCH LỚP");
+        jbtn_danhsachlop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_danhsachlopActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -69,11 +75,16 @@ public class TrangChu extends javax.swing.JFrame {
         gridBagConstraints.ipady = 66;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(71, 81, 0, 0);
-        TRANGCHU.add(jButton1, gridBagConstraints);
+        TRANGCHU.add(jbtn_danhsachlop, gridBagConstraints);
 
-        jButton2.setBackground(new java.awt.Color(255, 102, 0));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setText("DANH SÁCH HỌC SINH");
+        jbtn_danhsachhocsinh.setBackground(new java.awt.Color(255, 102, 0));
+        jbtn_danhsachhocsinh.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jbtn_danhsachhocsinh.setText("DANH SÁCH HỌC SINH");
+        jbtn_danhsachhocsinh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_danhsachhocsinhActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
@@ -81,14 +92,14 @@ public class TrangChu extends javax.swing.JFrame {
         gridBagConstraints.ipady = 66;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(71, 81, 0, 49);
-        TRANGCHU.add(jButton2, gridBagConstraints);
+        TRANGCHU.add(jbtn_danhsachhocsinh, gridBagConstraints);
 
-        jButton4.setBackground(new java.awt.Color(255, 102, 0));
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton4.setText("BẢNG ĐIỂM MÔN HỌC");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jbtn_bangdiemmonhoc.setBackground(new java.awt.Color(255, 102, 0));
+        jbtn_bangdiemmonhoc.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jbtn_bangdiemmonhoc.setText("BẢNG ĐIỂM MÔN HỌC");
+        jbtn_bangdiemmonhoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jbtn_bangdiemmonhocActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -98,14 +109,14 @@ public class TrangChu extends javax.swing.JFrame {
         gridBagConstraints.ipady = 68;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(54, 54, 83, 0);
-        TRANGCHU.add(jButton4, gridBagConstraints);
+        TRANGCHU.add(jbtn_bangdiemmonhoc, gridBagConstraints);
 
-        jButton5.setBackground(new java.awt.Color(255, 102, 0));
-        jButton5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton5.setText("BÁO CÁO TỔNG KẾT MÔN");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jbtn_baocaotongketmon.setBackground(new java.awt.Color(255, 102, 0));
+        jbtn_baocaotongketmon.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jbtn_baocaotongketmon.setText("BÁO CÁO TỔNG KẾT MÔN");
+        jbtn_baocaotongketmon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jbtn_baocaotongketmonActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -114,18 +125,23 @@ public class TrangChu extends javax.swing.JFrame {
         gridBagConstraints.ipady = 68;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(54, 81, 83, 0);
-        TRANGCHU.add(jButton5, gridBagConstraints);
+        TRANGCHU.add(jbtn_baocaotongketmon, gridBagConstraints);
 
-        jButton6.setBackground(new java.awt.Color(255, 102, 0));
-        jButton6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton6.setText("BÁO CÁO TỔNG KẾT HỌC KỲ");
+        jbtn_baocaotongkethocky.setBackground(new java.awt.Color(255, 102, 0));
+        jbtn_baocaotongkethocky.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jbtn_baocaotongkethocky.setText("BÁO CÁO TỔNG KẾT HỌC KỲ");
+        jbtn_baocaotongkethocky.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_baocaotongkethockyActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.ipady = 68;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(54, 81, 83, 49);
-        TRANGCHU.add(jButton6, gridBagConstraints);
+        TRANGCHU.add(jbtn_baocaotongkethocky, gridBagConstraints);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -135,25 +151,56 @@ public class TrangChu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TRANGCHU, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(TRANGCHU, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         TRANGCHU.getAccessibleContext().setAccessibleParent(TRANGCHU);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jbtn_hosohocsinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_hosohocsinhActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        HoSoHocSinh ct = new HoSoHocSinh();
+        ct.setLocationRelativeTo(null);
+        ct.setVisible(true);
+    }//GEN-LAST:event_jbtn_hosohocsinhActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jbtn_bangdiemmonhocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_bangdiemmonhocActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+        BangDiemMonHoc ct = new BangDiemMonHoc();
+        ct.setLocationRelativeTo(null);
+        ct.setVisible(true);
+    }//GEN-LAST:event_jbtn_bangdiemmonhocActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jbtn_baocaotongketmonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_baocaotongketmonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+         BaoCaoTongKetMon ct = new BaoCaoTongKetMon();
+        ct.setLocationRelativeTo(null);
+        ct.setVisible(true);
+    }//GEN-LAST:event_jbtn_baocaotongketmonActionPerformed
+
+    private void jbtn_danhsachlopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_danhsachlopActionPerformed
+        // TODO add your handling code here:
+        DanhSachLop ct = new DanhSachLop();
+        ct.setLocationRelativeTo(null);
+        ct.setVisible(true);
+    }//GEN-LAST:event_jbtn_danhsachlopActionPerformed
+
+    private void jbtn_danhsachhocsinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_danhsachhocsinhActionPerformed
+        // TODO add your handling code here:
+        HoSoHocSinh ct = new HoSoHocSinh();
+        ct.setLocationRelativeTo(null);
+        ct.setVisible(true);
+    }//GEN-LAST:event_jbtn_danhsachhocsinhActionPerformed
+
+    private void jbtn_baocaotongkethockyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_baocaotongkethockyActionPerformed
+        // TODO add your handling code here:
+        BaoCaoTongKetHocKy ct = new BaoCaoTongKetHocKy();
+        ct.setLocationRelativeTo(null);
+        ct.setVisible(true);
+    }//GEN-LAST:event_jbtn_baocaotongkethockyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,11 +239,11 @@ public class TrangChu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel TRANGCHU;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jbtn_bangdiemmonhoc;
+    private javax.swing.JButton jbtn_baocaotongkethocky;
+    private javax.swing.JButton jbtn_baocaotongketmon;
+    private javax.swing.JButton jbtn_danhsachhocsinh;
+    private javax.swing.JButton jbtn_danhsachlop;
+    private javax.swing.JButton jbtn_hosohocsinh;
     // End of variables declaration//GEN-END:variables
 }
