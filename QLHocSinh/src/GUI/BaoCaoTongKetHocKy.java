@@ -33,11 +33,11 @@ public class BaoCaoTongKetHocKy extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtHocKy = new javax.swing.JTextField();
+        btnTim = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        txtHienThiHocKy = new javax.swing.JTextField();
+        btnInBangDiem = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Báo Cáo Tổng Kết Học Kỳ");
@@ -97,11 +97,11 @@ public class BaoCaoTongKetHocKy extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 137;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(31, 28, 0, 0);
-        jPanel1.add(jTextField1, gridBagConstraints);
+        jPanel1.add(txtHocKy, gridBagConstraints);
 
-        jButton1.setBackground(new java.awt.Color(255, 102, 0));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setText("TÌM");
+        btnTim.setBackground(new java.awt.Color(255, 102, 0));
+        btnTim.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnTim.setText("TÌM");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
@@ -110,7 +110,7 @@ public class BaoCaoTongKetHocKy extends javax.swing.JFrame {
         gridBagConstraints.ipady = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(18, 141, 0, 0);
-        jPanel1.add(jButton1, gridBagConstraints);
+        jPanel1.add(btnTim, gridBagConstraints);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("HỌC KỲ");
@@ -127,11 +127,11 @@ public class BaoCaoTongKetHocKy extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 134;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(94, 28, 11, 0);
-        jPanel1.add(jTextField2, gridBagConstraints);
+        jPanel1.add(txtHienThiHocKy, gridBagConstraints);
 
-        jButton2.setBackground(new java.awt.Color(255, 102, 0));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setText("IN BẢNG ĐIỂM");
+        btnInBangDiem.setBackground(new java.awt.Color(255, 102, 0));
+        btnInBangDiem.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnInBangDiem.setText("IN BẢNG ĐIỂM");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 3;
@@ -140,7 +140,7 @@ public class BaoCaoTongKetHocKy extends javax.swing.JFrame {
         gridBagConstraints.ipady = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(83, 161, 11, 23);
-        jPanel1.add(jButton2, gridBagConstraints);
+        jPanel1.add(btnInBangDiem, gridBagConstraints);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -197,15 +197,15 @@ public class BaoCaoTongKetHocKy extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnInBangDiem;
+    private javax.swing.JButton btnTim;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField txtHienThiHocKy;
+    private javax.swing.JTextField txtHocKy;
     // End of variables declaration//GEN-END:variables
 }

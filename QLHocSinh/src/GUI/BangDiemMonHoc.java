@@ -28,28 +28,28 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jComboBox1 = new javax.swing.JComboBox<String>();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jComboBox2 = new javax.swing.JComboBox<String>();
-        jButton1 = new javax.swing.JButton();
+        txtTim = new javax.swing.JTextField();
+        ChonLop = new javax.swing.JRadioButton();
+        ChonHocKy = new javax.swing.JRadioButton();
+        ListMonHoc = new javax.swing.JComboBox<>();
+        btnTim = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtHienThiTenLop = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtHienThiMonHoc = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        txtHienThiHocKy = new javax.swing.JTextField();
+        btnGiaoVu = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        btnInBangDiem = new javax.swing.JButton();
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Bảng Điểm Môn Học");
@@ -78,7 +78,7 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(18, 14, 0, 0);
         jPanel1.add(jLabel2, gridBagConstraints);
 
-        jTextField1.setText(" ");
+        txtTim.setText(" ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -87,30 +87,30 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         gridBagConstraints.ipady = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(18, 18, 0, 0);
-        jPanel1.add(jTextField1, gridBagConstraints);
+        jPanel1.add(txtTim, gridBagConstraints);
 
-        jRadioButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jRadioButton1.setText("LỚP");
+        ChonLop.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        ChonLop.setText("LỚP");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 18, 0, 0);
-        jPanel1.add(jRadioButton1, gridBagConstraints);
+        jPanel1.add(ChonLop, gridBagConstraints);
 
-        jRadioButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jRadioButton2.setText("HỌC KỲ");
+        ChonHocKy.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        ChonHocKy.setText("HỌC KỲ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 18, 0, 0);
-        jPanel1.add(jRadioButton2, gridBagConstraints);
+        jPanel1.add(ChonHocKy, gridBagConstraints);
 
-        jComboBox2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MÔN HỌC", "TOÁN HỌC", "VẬT LÝ", "HÓA HỌC", "SINH HỌC", "LỊCH SỬ", "ĐỊA LÝ", "VĂN HỌC", "ĐẠO ĐỨC", "THỂ DỤC" }));
+        ListMonHoc.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        ListMonHoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MÔN HỌC", "TOÁN HỌC", "VẬT LÝ", "HÓA HỌC", "SINH HỌC", "LỊCH SỬ", "ĐỊA LÝ", "VĂN HỌC", "ĐẠO ĐỨC", "THỂ DỤC" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
@@ -118,14 +118,14 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 51;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(6, 18, 0, 0);
-        jPanel1.add(jComboBox2, gridBagConstraints);
+        jPanel1.add(ListMonHoc, gridBagConstraints);
 
-        jButton1.setBackground(new java.awt.Color(255, 102, 0));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setText("TÌM");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnTim.setBackground(new java.awt.Color(255, 102, 0));
+        btnTim.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnTim.setText("TÌM");
+        btnTim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnTimActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -137,7 +137,7 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         gridBagConstraints.ipady = 27;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(6, 31, 0, 0);
-        jPanel1.add(jButton1, gridBagConstraints);
+        jPanel1.add(btnTim, gridBagConstraints);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("TÊN LỚP");
@@ -148,7 +148,7 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(20, 12, 0, 0);
         jPanel1.add(jLabel3, gridBagConstraints);
 
-        jTextField2.setText(" ");
+        txtHienThiTenLop.setText(" ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 7;
@@ -157,7 +157,7 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 94;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(18, 4, 0, 0);
-        jPanel1.add(jTextField2, gridBagConstraints);
+        jPanel1.add(txtHienThiTenLop, gridBagConstraints);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("MÔN HỌC");
@@ -168,9 +168,9 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(20, 20, 0, 0);
         jPanel1.add(jLabel4, gridBagConstraints);
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        txtHienThiMonHoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                txtHienThiMonHocActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -181,7 +181,7 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 94;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(18, 4, 0, 0);
-        jPanel1.add(jTextField3, gridBagConstraints);
+        jPanel1.add(txtHienThiMonHoc, gridBagConstraints);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("HỌC KỲ");
@@ -198,11 +198,11 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 94;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(18, 4, 0, 0);
-        jPanel1.add(jTextField4, gridBagConstraints);
+        jPanel1.add(txtHienThiHocKy, gridBagConstraints);
 
-        jButton3.setBackground(new java.awt.Color(255, 0, 0));
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton3.setText("GIÁO VỤ");
+        btnGiaoVu.setBackground(new java.awt.Color(255, 0, 0));
+        btnGiaoVu.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnGiaoVu.setText("GIÁO VỤ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 21;
         gridBagConstraints.gridy = 3;
@@ -211,7 +211,7 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         gridBagConstraints.ipady = 27;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(9, 59, 0, 32);
-        jPanel1.add(jButton3, gridBagConstraints);
+        jPanel1.add(btnGiaoVu, gridBagConstraints);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -237,12 +237,12 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(153, 255, 204));
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
-        jButton2.setBackground(new java.awt.Color(255, 102, 0));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setText("IN BẢNG ĐIỂM");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnInBangDiem.setBackground(new java.awt.Color(255, 102, 0));
+        btnInBangDiem.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnInBangDiem.setText("IN BẢNG ĐIỂM");
+        btnInBangDiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnInBangDiemActionPerformed(evt);
             }
         });
 
@@ -259,7 +259,7 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btnInBangDiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -275,24 +275,24 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(148, 148, 148)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(btnInBangDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void txtHienThiMonHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHienThiMonHocActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_txtHienThiMonHocActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnInBangDiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInBangDiemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnInBangDiemActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnTimActionPerformed
 
     /**
      * @param args the command line arguments
@@ -330,11 +330,13 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JRadioButton ChonHocKy;
+    private javax.swing.JRadioButton ChonLop;
+    private javax.swing.JComboBox<String> ListMonHoc;
+    private javax.swing.JButton btnGiaoVu;
+    private javax.swing.JButton btnInBangDiem;
+    private javax.swing.JButton btnTim;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -342,13 +344,11 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField txtHienThiHocKy;
+    private javax.swing.JTextField txtHienThiMonHoc;
+    private javax.swing.JTextField txtHienThiTenLop;
+    private javax.swing.JTextField txtTim;
     // End of variables declaration//GEN-END:variables
 }

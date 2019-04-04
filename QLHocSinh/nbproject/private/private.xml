@@ -3,8 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Carvin/Desktop/HK%204/Java/QuanLyHocSinh/QLHocSinh/src/GUI/HoSoHocSinh.java</file>
             <file>file:/C:/Users/Carvin/Desktop/HK%204/Java/QuanLyHocSinh/QLHocSinh/src/qlhocsinh/QLHocSinh.java</file>
+=======
+            <file>file:/C:/Users/Vinh/Desktop/New%20folder/QuanLyHocSinh/QLHocSinh/src/GUI/ThemTaiKhoan.java</file>
+            <file>file:/C:/Users/Vinh/Desktop/New%20folder/QuanLyHocSinh/QLHocSinh/src/GUI/BangDiemMonHoc.java</file>
+>>>>>>> f2d1f7ec77266c2c21fd71f47fc9421779a1a8c7
         </group>
     </open-files>
 </project-private>
