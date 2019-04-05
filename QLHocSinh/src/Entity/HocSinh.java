@@ -29,6 +29,16 @@ public class HocSinh implements java.io.Serializable{
         this.lop = "";
         this.mahocsinh = "";  
     }
+    
+    public HocSinh(String ten,String ngaysinh,String gioitinh,String diachi,String email,String lop,String mahocsinh) {
+        this.ten = ten;
+        this.ngaysinh = ngaysinh;
+        this.gioitinh = gioitinh;
+        this.diachi = diachi;
+        this.email = email;
+        this.lop = lop;
+        this.mahocsinh = mahocsinh;  
+    }
     public void setid(int id ) {
         this.id = id;
     }

@@ -16,7 +16,7 @@ import org.hibernate.Session;
  * @author Carvin
  */
 public class LopDAO {
-     public static List<Lop> layDanhSachLop()
+    public static List<Lop> layDanhSachLop()
     {
         List<Lop> dsLop = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -27,4 +27,6 @@ public class LopDAO {
         session.close();
         return dsLop;
     }
+    
+    
 }

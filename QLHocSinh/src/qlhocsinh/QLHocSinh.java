@@ -72,7 +72,7 @@ public class QLHocSinh {
         }
         
         List<HocSinh> hs = HocSinhDAO.layThongTinHocSinh("1910101");
-        for (int i = 0; i < dsHocSinh.size(); i++) {
+        for (int i = 0; i < hs.size(); i++) {
             System.out.println("Họ tên: " + hs.get(i).getten());
             System.out.println("Email: " + hs.get(i).getemail());
             System.out.println("địa chỉ : " + hs.get(i).getdiachi());
