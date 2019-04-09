@@ -396,7 +396,7 @@ public class HoSoHocSinh extends javax.swing.JFrame {
         HocSinh hs = new HocSinh(hoten, ngaysinh, gioitinh, diachi, email, malop, mahocsinh);
         boolean result = HocSinhDAO.themHocSinh(hs);
         if (result) {
-            JOptionPane.showMessageDialog(this, "Thêm sinh viên thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Thêm học sinh thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(this, "Thêm thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
         }
@@ -419,9 +419,9 @@ public class HoSoHocSinh extends javax.swing.JFrame {
 //         System.out.println(" mahs : " + id);
         boolean result = HocSinhDAO.xoaHocSinh(jtf_mahocsinh.getText().trim());
         if (result) {
-            JOptionPane.showMessageDialog(this, "xóa sinh viên thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Xóa học sinh thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(this, "xoa thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Xóa thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jbt_xoaActionPerformed
 
@@ -451,9 +451,9 @@ public class HoSoHocSinh extends javax.swing.JFrame {
         HocSinh hs = new HocSinh(hoten, ngaysinh, gioitinh, diachi, email, malop, mahocsinh);
         boolean result = HocSinhDAO.capNhatHocSinh(hs);
         if (result) {
-            JOptionPane.showMessageDialog(this, "Thêm sinh viên thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Sửa thông tin học sinh thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(this, "Thêm thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Sửa thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jbt_suaActionPerformed
 
