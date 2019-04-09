@@ -35,7 +35,7 @@ public class TrangChu extends javax.swing.JFrame {
         jbtn_baocaotongketmon = new javax.swing.JButton();
         jbtn_baocaotongkethocky = new javax.swing.JButton();
         jbtn_baocaotongketmon1 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnMonHoc = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Trang Chủ");
@@ -90,7 +90,7 @@ public class TrangChu extends javax.swing.JFrame {
 
         jbtn_baocaotongkethocky.setBackground(new java.awt.Color(255, 102, 0));
         jbtn_baocaotongkethocky.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jbtn_baocaotongkethocky.setText("BÁO CÁO TỔNG KẾT HỌC KỲ");
+        jbtn_baocaotongkethocky.setText("BÁO CÁO HỌC KỲ");
         jbtn_baocaotongkethocky.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtn_baocaotongkethockyActionPerformed(evt);
@@ -106,9 +106,9 @@ public class TrangChu extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(255, 51, 0));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setText("MÔN HỌC");
+        btnMonHoc.setBackground(new java.awt.Color(255, 51, 0));
+        btnMonHoc.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnMonHoc.setText("MÔN HỌC");
 
         javax.swing.GroupLayout TRANGCHULayout = new javax.swing.GroupLayout(TRANGCHU);
         TRANGCHU.setLayout(TRANGCHULayout);
@@ -118,22 +118,21 @@ public class TrangChu extends javax.swing.JFrame {
                 .addGap(65, 65, 65)
                 .addGroup(TRANGCHULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(TRANGCHULayout.createSequentialGroup()
+                        .addGroup(TRANGCHULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnMonHoc, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbtn_bangdiemmonhoc, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(81, 81, 81)
+                        .addComponent(jbtn_baocaotongketmon1))
+                    .addGroup(TRANGCHULayout.createSequentialGroup()
                         .addComponent(jbtn_hosohocsinh, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(81, 81, 81)
-                        .addComponent(jbtn_danhsachlop, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(81, 81, 81)
-                        .addComponent(jbtn_danhsachhocsinh, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(TRANGCHULayout.createSequentialGroup()
-                        .addGroup(TRANGCHULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jbtn_bangdiemmonhoc, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE))
-                        .addGap(81, 81, 81)
-                        .addGroup(TRANGCHULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(TRANGCHULayout.createSequentialGroup()
-                                .addComponent(jbtn_baocaotongketmon1)
-                                .addGap(81, 81, 81)
-                                .addComponent(jbtn_baocaotongkethocky))
-                            .addComponent(jbtn_baocaotongketmon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addComponent(jbtn_danhsachlop, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(81, 81, 81)
+                .addGroup(TRANGCHULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtn_danhsachhocsinh, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtn_baocaotongkethocky, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtn_baocaotongketmon, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         TRANGCHULayout.setVerticalGroup(
             TRANGCHULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,16 +148,17 @@ public class TrangChu extends javax.swing.JFrame {
                     .addComponent(jbtn_baocaotongketmon1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbtn_baocaotongkethocky, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(54, 54, 54)
-                .addGroup(TRANGCHULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jbtn_baocaotongketmon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)))
+                .addGroup(TRANGCHULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnMonHoc, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtn_baocaotongketmon, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TRANGCHU, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(TRANGCHU, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,7 +254,7 @@ public class TrangChu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel TRANGCHU;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnMonHoc;
     private javax.swing.JButton jbtn_bangdiemmonhoc;
     private javax.swing.JButton jbtn_baocaotongkethocky;
     private javax.swing.JButton jbtn_baocaotongketmon;
