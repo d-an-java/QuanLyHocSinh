@@ -48,11 +48,15 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         jTable2 = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         btnInBangDiem = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        btnThoat = new javax.swing.JButton();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Bảng Điểm Môn Học");
+        setBackground(new java.awt.Color(153, 255, 204));
+        setPreferredSize(new java.awt.Dimension(840, 490));
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 204));
         jPanel1.setLayout(new java.awt.GridBagLayout());
@@ -62,9 +66,9 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 13;
+        gridBagConstraints.gridwidth = 21;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(17, 2, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(3, 2, 0, 0);
         jPanel1.add(jLabel1, gridBagConstraints);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -72,28 +76,29 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.gridheight = 4;
         gridBagConstraints.ipady = 9;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 14, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(5, 14, 0, 0);
         jPanel1.add(jLabel2, gridBagConstraints);
 
         txtTim.setText(" ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.ipadx = 134;
+        gridBagConstraints.gridwidth = 9;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.ipadx = 143;
         gridBagConstraints.ipady = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 18, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(5, 18, 0, 0);
         jPanel1.add(txtTim, gridBagConstraints);
 
         ChonLop.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         ChonLop.setText("LỚP");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 18, 0, 0);
@@ -103,7 +108,7 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         ChonHocKy.setText("HỌC KỲ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 18, 0, 0);
@@ -113,28 +118,28 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         ListMonHoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MÔN HỌC", "TOÁN HỌC", "VẬT LÝ", "HÓA HỌC", "SINH HỌC", "LỊCH SỬ", "ĐỊA LÝ", "VĂN HỌC", "ĐẠO ĐỨC", "THỂ DỤC" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridy = 7;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.ipadx = 51;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 18, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(14, 18, 0, 0);
         jPanel1.add(ListMonHoc, gridBagConstraints);
 
         btnTim.setBackground(new java.awt.Color(255, 102, 0));
         btnTim.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnTim.setText("TÌM");
+        btnTim.setText("TÌM KIẾM");
         btnTim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTimActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 11;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.gridx = 15;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 11;
         gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 19;
-        gridBagConstraints.ipady = 27;
+        gridBagConstraints.ipadx = 14;
+        gridBagConstraints.ipady = 22;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(6, 31, 0, 0);
         jPanel1.add(btnTim, gridBagConstraints);
@@ -143,7 +148,7 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         jLabel3.setText("TÊN LỚP");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 12, 0, 0);
         jPanel1.add(jLabel3, gridBagConstraints);
@@ -151,10 +156,10 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         txtHienThiTenLop.setText(" ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 94;
+        gridBagConstraints.ipadx = 103;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(18, 4, 0, 0);
         jPanel1.add(txtHienThiTenLop, gridBagConstraints);
@@ -163,7 +168,7 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         jLabel4.setText("MÔN HỌC");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 20, 0, 0);
         jPanel1.add(jLabel4, gridBagConstraints);
@@ -175,8 +180,8 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 10;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 94;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -186,14 +191,14 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("HỌC KỲ");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 19;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridx = 27;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 18, 0, 0);
         jPanel1.add(jLabel5, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 20;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridx = 28;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 94;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -203,14 +208,18 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         btnGiaoVu.setBackground(new java.awt.Color(255, 0, 0));
         btnGiaoVu.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnGiaoVu.setText("GIÁO VỤ");
+        btnGiaoVu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGiaoVuActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 21;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.gridx = 29;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 12;
-        gridBagConstraints.ipady = 27;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(9, 59, 0, 32);
+        gridBagConstraints.insets = new java.awt.Insets(11, 84, 0, 38);
         jPanel1.add(btnGiaoVu, gridBagConstraints);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
@@ -246,36 +255,58 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(255, 51, 0));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton1.setText("NHẬP ĐIỂM");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        btnThoat.setBackground(new java.awt.Color(255, 51, 0));
+        btnThoat.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnThoat.setText("THOÁT");
+        btnThoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThoatActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 681, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnInBangDiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnInBangDiem)
+                    .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(11, 11, 11)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31)
+                        .addComponent(btnInBangDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(btnInBangDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(2, 2, 2)
+                        .addComponent(jScrollPane2))))
         );
 
         pack();
@@ -293,6 +324,20 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
     private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTimActionPerformed
+
+    private void btnGiaoVuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGiaoVuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGiaoVuActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
+        // TODO add your handling code here:
+        setVisible(false); //you can't see me!
+        dispose();
+    }//GEN-LAST:event_btnThoatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -335,7 +380,9 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> ListMonHoc;
     private javax.swing.JButton btnGiaoVu;
     private javax.swing.JButton btnInBangDiem;
+    private javax.swing.JButton btnThoat;
     private javax.swing.JButton btnTim;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
