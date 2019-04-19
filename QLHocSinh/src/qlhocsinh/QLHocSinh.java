@@ -87,7 +87,7 @@ public class QLHocSinh {
           // Diem     
         List<Diem> dsDiem = DiemDAO.layDanhSachDiem();
         for (int i = 0; i < dsDiem.size(); i++) {
-            System.out.println(" Diem - ten: " + dsDiem.get(i).getdiem());
+            System.out.println(" Diem - ten: " + dsDiem.get(i).getdiemheso1());
         }
     }
     

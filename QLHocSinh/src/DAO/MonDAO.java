@@ -27,4 +27,79 @@ public class MonDAO {
         session.close();
         return dsMon;
     }
+     public static List<Mon> layThongTinMon(String maMon) {
+        List<Mon> dsMon = null;
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        String hql = "from Mon where mamon=:mamon ";
+        Query query = session.createQuery(hql);
+        query.setParameter("mamon", maMon);
+        dsMon = query.list();
+        session.close();
+        return dsMon;
+        
+    }
+    
+    // Thêm
+    public static boolean themMon(Mon mon) {
+         List<Mon> m = MonDAO.layThongTinMon(mon.getmamon());
+        if(m.size() > 0)
+           return false; 
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            session.beginTransaction();
+            session.save(mon);
+            session.getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+            System.out.println(e);
+            return false;
+        } finally {
+            session.close();
+        }
+    }
+    
+    
+     // sửa
+    public static boolean capNhatMon(Mon mon) {
+        List<Mon> mh = MonDAO.layThongTinMon(mon.getmamon());
+       if(mh == null)
+           return false;
+        mon.setid(mh.get(0).getid());
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            session.beginTransaction();
+            session.update(mon);
+            session.getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+            System.out.println(e);
+            return false;
+        } finally {
+            session.close();
+        }
+    }
+    
+    public static boolean xoaMon(String mamon) {
+       List<Mon> mh = MonDAO.layThongTinMon(mamon);
+       if(mh == null)
+           return false;
+        
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            session.beginTransaction();
+            session.delete(mh.get(0));
+            session.getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+            System.out.println(e);
+            return false;
+        } finally {
+            session.close();
+        }
+    }
+    
 }

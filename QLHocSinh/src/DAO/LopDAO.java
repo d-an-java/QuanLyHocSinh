@@ -16,6 +16,7 @@ import org.hibernate.Session;
  * @author Carvin
  */
 public class LopDAO {
+    
     public static List<Lop> layDanhSachLop()
     {
         List<Lop> dsLop = null;
@@ -28,5 +29,16 @@ public class LopDAO {
         return dsLop;
     }
     
-    
+    public static List<Lop> layDanhSachLop(String malop)
+    {
+        List<Lop> dsLop = null;
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        String hql = "from Lop where malop=:malop";
+        Query query = session.createQuery(hql);
+        query.setParameter("malop", malop);
+        dsLop = query.list();
+        session.close();
+        return dsLop;
+    }
 }

@@ -23,7 +23,7 @@ public class HocSinhDAO {
         List<HocSinh> dsHocSinh = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        String hql = "from HocSinh";
+        String hql = "from HocSinh ORDER BY mahocsinh,lop ";
         Query query = session.createQuery(hql);
         dsHocSinh = query.list();
         session.close();
@@ -50,7 +50,7 @@ public class HocSinhDAO {
         
     }
     
-      public static List<HocSinh> LopCoBaoNhieuHocSinh(String malop) {
+    public static List<HocSinh> LopCoBaoNhieuHocSinh(String malop) {
         List<HocSinh> dsHocSinh = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
@@ -63,11 +63,25 @@ public class HocSinhDAO {
         
     }
     
+     public static List<HocSinh> Timhocsinhcualop(String tenlop) {
+        List<HocSinh> dsHocSinh = null;
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        String hql = "select hs from HocSinh  as  hs ,Lop  as  lp where hs.lop = lp.malop and lp.tenlop like:tenlop  ";
+        Query query = session.createQuery(hql);
+        query.setParameter("tenlop", "%"+tenlop+"%"); 
+        dsHocSinh = query.list();
+        session.close();
+        return dsHocSinh;
+        
+    }
+    
     // Thêm
     public static boolean themHocSinh(HocSinh hs) {
-//        if (HocSinhDAO.layThongTinHocSinh(tk.gettentaikhoan()) != null) {
-//            return false;
-//        }
+        List<HocSinh> d =HocSinhDAO.layThongTinHocSinh(hs.getmahocsinh());
+        if(d.size() == 1)
+           return false;   
+        
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
@@ -87,7 +101,7 @@ public class HocSinhDAO {
      // sửa
     public static boolean capNhatHocSinh(HocSinh hs) {
         List<HocSinh> mh = HocSinhDAO.layThongTinHocSinh(hs.getmahocsinh());
-       if(mh == null)
+       if(mh.size() < 1)
            return false;
         hs.setid(mh.get(0).getid());
         Session session = HibernateUtil.getSessionFactory().openSession();

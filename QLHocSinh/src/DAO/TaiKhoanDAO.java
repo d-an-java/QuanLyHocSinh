@@ -59,7 +59,7 @@ public class TaiKhoanDAO {
         List<TaiKhoan> dsTaiKhoan = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        String hql = "from TaiKhoan where tentaikhoan=:mahs ";
+        String hql = "from TaiKhoan where tentaikhoan=:matk ";
         Query query = session.createQuery(hql);
         query.setParameter("matk", maTaiKhoan);
         dsTaiKhoan = query.list();
@@ -70,9 +70,9 @@ public class TaiKhoanDAO {
 
     // Thêm
     public static boolean themTaiKhoan(TaiKhoan tk) {
-        if (TaiKhoanDAO.layThongTinTaiKhoan(tk.gettentaikhoan()) != null) {
-            return false;
-        }
+        List<TaiKhoan> d = TaiKhoanDAO.layThongTinTaiKhoan(tk.gettentaikhoan());
+        if(d.size() > 0)
+           return false;  
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();

@@ -11,6 +11,9 @@
         <column name="id" length="11" />
         <generator class="assigned" />
         </id>
+         <property name="mahocky" type="string">
+        <column name="mahocky" length="255" />
+        </property>
         <property name="tenhocky" type="string">
         <column name="tenhocky" length="255" />
         </property>  

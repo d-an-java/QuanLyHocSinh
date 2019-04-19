@@ -5,6 +5,8 @@
  */
 package Entity;
 
+import Util.MD5Lib;
+
 /**
  *
  * @author Carvin
@@ -16,13 +18,18 @@ public class TaiKhoan implements java.io.Serializable{
     private String matkhau;
     private int chucvu;
     //Các phương thức khởi tạo, get, set.
-     public TaiKhoan() {
+    public TaiKhoan() {
         this.id = 0;
         this.tentaikhoan = "";
         this.matkhau = "";
         this.chucvu = 0;
     }
-    
+    public TaiKhoan(String tentk,String matkhau) {
+        this.id = 0;
+        this.tentaikhoan = tentk;
+        this.matkhau = MD5Lib.md5(matkhau);
+        this.chucvu = 1;
+    }
      public void setid(int id ) {
         this.id = id;
     }

@@ -21,6 +21,11 @@ public class Mon implements java.io.Serializable{
         this.hesomon = "";
         this.mamon = "";
     }
+    public Mon(String mamon, String tenmon) {
+        this.tenmon = tenmon;
+        this.hesomon = "10";
+        this.mamon = mamon;
+    }
     public void setid(int id ) {
         this.id = id;
     }
