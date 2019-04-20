@@ -29,6 +29,7 @@ public class MonHoc extends javax.swing.JFrame {
      */
     public MonHoc() {
         initComponents();
+        setResizable(false); 
         LoadData();
     }
 

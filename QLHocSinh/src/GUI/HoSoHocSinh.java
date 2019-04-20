@@ -31,6 +31,7 @@ public class HoSoHocSinh extends javax.swing.JFrame {
      */
     public HoSoHocSinh() throws ParseException {
         initComponents();
+        setResizable(false); 
         ButtonGroup bG = new ButtonGroup();
          bG.add(jrb_gtnam);
          bG.add(jrb_gtnu);
@@ -519,6 +520,7 @@ public class HoSoHocSinh extends javax.swing.JFrame {
         // TODO add your handling code here:
         setVisible(false); //you can't see me!
         dispose();
+        
     }//GEN-LAST:event_jbtn_thoatActionPerformed
 
     private void jbt_xoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbt_xoaActionPerformed

@@ -5,17 +5,37 @@
  */
 package GUI;
 
+import DAO.DiemDAO;
+import DAO.HocKyDAO;
+import DAO.HocSinhDAO;
+import Entity.Diem;
+import Entity.HocKy;
+import Entity.HocSinh;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Vinh
  */
 public class BaoCaoTongKetHocKy extends javax.swing.JFrame {
 
+    DefaultTableModel model=null;
     /**
      * Creates new form BaoCaoTongKetHocKy
      */
     public BaoCaoTongKetHocKy() {
         initComponents();
+        setResizable(false); 
+        LoadData();
+    }
+    
+    void LoadData() {
+        jcb_hocky.removeAllItems();
+        List<HocKy> dshk = HocKyDAO.layDanhSachHocKy();
+        for (int i = 0; i < dshk.size(); i++) {
+            jcb_hocky.addItem(dshk.get(i).gettenhocky());
+        }    
     }
 
     /**
@@ -28,20 +48,21 @@ public class BaoCaoTongKetHocKy extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtb_baocaohk = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        txtHocKy = new javax.swing.JTextField();
         btnTim = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtHienThiHocKy = new javax.swing.JTextField();
         btnInBangDiem = new javax.swing.JButton();
+        jcb_hocky = new javax.swing.JComboBox();
+        jbtn_thoat = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Báo Cáo Tổng Kết Học Kỳ");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtb_baocaohk.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -60,7 +81,7 @@ public class BaoCaoTongKetHocKy extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtb_baocaohk);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -83,6 +104,25 @@ public class BaoCaoTongKetHocKy extends javax.swing.JFrame {
         btnInBangDiem.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnInBangDiem.setText("IN BẢNG ĐIỂM");
 
+        jcb_hocky.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcb_hockyItemStateChanged(evt);
+            }
+        });
+
+        jbtn_thoat.setBackground(new java.awt.Color(255, 102, 0));
+        jbtn_thoat.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jbtn_thoat.setText("Thoát");
+        jbtn_thoat.setToolTipText("");
+        jbtn_thoat.setMaximumSize(new java.awt.Dimension(95, 23));
+        jbtn_thoat.setMinimumSize(new java.awt.Dimension(95, 23));
+        jbtn_thoat.setPreferredSize(new java.awt.Dimension(95, 23));
+        jbtn_thoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_thoatActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -90,33 +130,37 @@ public class BaoCaoTongKetHocKy extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtHocKy, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(10, 10, 10)
+                .addComponent(jcb_hocky, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnTim)
                 .addGap(28, 28, 28)
                 .addComponent(jLabel2)
                 .addGap(33, 33, 33)
                 .addComponent(txtHienThiHocKy, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(jbtn_thoat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnInBangDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(12, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtHocKy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnTim))
+                            .addComponent(btnTim)
+                            .addComponent(jcb_hocky, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jLabel2)
                         .addComponent(txtHienThiHocKy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnInBangDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnInBangDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbtn_thoat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(2, 2, 2)))
                 .addGap(8, 8, 8))
         );
 
@@ -149,6 +193,83 @@ public class BaoCaoTongKetHocKy extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jcb_hockyItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcb_hockyItemStateChanged
+        // TODO add your handling code here:
+        String hocky = jcb_hocky.getSelectedItem().toString().trim();
+        String hocky1 = hocky.substring(9, 13)+"_" ;
+        String hocky2 = hocky.substring(16, 20);
+        hocky = hocky1.concat(hocky2);
+        List<HocSinh> listResultSV;
+        String[] columns = new String [] {
+            "STT",
+            "Họ Tên",
+            "Lớp",
+            "TB Học Kỳ 1",
+            "TB Học Kỳ 2"
+        };
+        model = new DefaultTableModel(null , columns);
+
+        listResultSV = HocSinhDAO.layDanhSachHocSinh();
+
+        for (int i = 0; i < listResultSV.size(); i++) {
+            HocSinh hs = (HocSinh) listResultSV.get(i);
+            int stt = i;
+
+            String hk1 = hocky+"_HK1";
+            List<Diem> DiemHS1  = DiemDAO.DiemCuaHocSinh(hs.getmahocsinh(),hk1);
+            float tdhk1 = 0;
+            float dtbhk1 = 0 ;
+            if(DiemHS1.size() > 0)
+            {
+                for(int j = 0; j < DiemHS1.size(); j++ )
+                {
+                    Diem diem = (Diem) DiemHS1.get(j);
+                    tdhk1 += diem.getdiemtbmon();
+                }
+
+                if(DiemHS1.size()>0)
+                dtbhk1 = tdhk1/DiemHS1.size();
+            }
+
+            String hk2 = hocky+"_HK2";
+            List<Diem> DiemHS2  = DiemDAO.DiemCuaHocSinh(hs.getmahocsinh(),hk2);
+            float tdhk2 = 0;
+            float dtbhk2 = 0 ;
+            if(DiemHS2.size() > 0)
+            {
+                for(int j = 0; j < DiemHS2.size(); j++ )
+                {
+                    Diem diem = (Diem) DiemHS2.get(j);
+                    tdhk2 += diem.getdiemtbmon();
+                }
+                dtbhk2 = tdhk2/DiemHS2.size();
+            }
+
+            Object[] items = new Object[] {
+                stt++,
+                hs.getten(),
+                hs.getlop(),
+                dtbhk1,
+                dtbhk2
+            };
+            model.addRow(items);
+        }
+        jtb_baocaohk.setModel(model);
+        jtb_baocaohk.setRowHeight(30);
+        jtb_baocaohk.getColumnModel().getColumn(0).setPreferredWidth(100);
+        jtb_baocaohk.getColumnModel().getColumn(1).setPreferredWidth(200);
+        jtb_baocaohk.getColumnModel().getColumn(2).setPreferredWidth(150);
+        jtb_baocaohk.getColumnModel().getColumn(3).setPreferredWidth(100);
+        jtb_baocaohk.getColumnModel().getColumn(4).setPreferredWidth(100);
+    }//GEN-LAST:event_jcb_hockyItemStateChanged
+
+    private void jbtn_thoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_thoatActionPerformed
+        // TODO add your handling code here:
+        setVisible(false); //you can't see me!
+        dispose();
+
+    }//GEN-LAST:event_jbtn_thoatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,8 +314,9 @@ public class BaoCaoTongKetHocKy extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton jbtn_thoat;
+    private javax.swing.JComboBox jcb_hocky;
+    private javax.swing.JTable jtb_baocaohk;
     private javax.swing.JTextField txtHienThiHocKy;
-    private javax.swing.JTextField txtHocKy;
     // End of variables declaration//GEN-END:variables
 }

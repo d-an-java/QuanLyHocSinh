@@ -16,6 +16,7 @@ public class BaoCaoTongKetMon extends javax.swing.JFrame {
      */
     public BaoCaoTongKetMon() {
         initComponents();
+        setResizable(false); 
     }
 
     /**
@@ -40,6 +41,7 @@ public class BaoCaoTongKetMon extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtHienThiHocKy = new javax.swing.JTextField();
         btninBangDiem = new javax.swing.JButton();
+        jbtn_thoat = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnGiaoVu = new javax.swing.JButton();
 
@@ -125,6 +127,19 @@ public class BaoCaoTongKetMon extends javax.swing.JFrame {
             }
         });
 
+        jbtn_thoat.setBackground(new java.awt.Color(255, 102, 0));
+        jbtn_thoat.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jbtn_thoat.setText("Thoát");
+        jbtn_thoat.setToolTipText("");
+        jbtn_thoat.setMaximumSize(new java.awt.Dimension(95, 23));
+        jbtn_thoat.setMinimumSize(new java.awt.Dimension(95, 23));
+        jbtn_thoat.setPreferredSize(new java.awt.Dimension(95, 23));
+        jbtn_thoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_thoatActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -138,7 +153,8 @@ public class BaoCaoTongKetMon extends javax.swing.JFrame {
                         .addComponent(jRadioButton2)
                         .addGap(26, 26, 26)
                         .addComponent(btnTim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbtn_thoat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(10, 10, 10)
@@ -152,8 +168,8 @@ public class BaoCaoTongKetMon extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtHienThiHocKy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(54, 54, 54)
-                        .addComponent(btninBangDiem)
-                        .addGap(25, 25, 25))))
+                        .addComponent(btninBangDiem)))
+                .addGap(25, 25, 25))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,10 +193,12 @@ public class BaoCaoTongKetMon extends javax.swing.JFrame {
                             .addGap(1, 1, 1)
                             .addComponent(txtHienThiMon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnTim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jRadioButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnTim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jbtn_thoat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39))
         );
 
@@ -243,6 +261,12 @@ public class BaoCaoTongKetMon extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btninBangDiemActionPerformed
 
+    private void jbtn_thoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_thoatActionPerformed
+        // TODO add your handling code here:
+        setVisible(false); //you can't see me!
+        dispose();
+    }//GEN-LAST:event_jbtn_thoatActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -291,6 +315,7 @@ public class BaoCaoTongKetMon extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JButton jbtn_thoat;
     private javax.swing.JTextField txtHienThiHocKy;
     private javax.swing.JTextField txtHienThiMon;
     private javax.swing.JTextField txtTim;

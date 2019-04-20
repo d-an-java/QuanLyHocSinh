@@ -49,6 +49,7 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
      */
     public BangDiemMonHoc() {
         initComponents();
+        setResizable(false); 
         ButtonGroup bG = new ButtonGroup();
         bG.add(jrb_mahocsinh);
         bG.add(jrb_lop);

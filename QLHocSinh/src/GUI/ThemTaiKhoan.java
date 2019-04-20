@@ -21,6 +21,7 @@ public class ThemTaiKhoan extends javax.swing.JFrame {
      */
     public ThemTaiKhoan() {
         initComponents();
+        setResizable(false); 
     }
 
     /**

@@ -135,7 +135,11 @@ public class Login extends javax.swing.JFrame {
                     this.dispose();
                     java.awt.EventQueue.invokeLater(new Runnable() {
                         public void run() {
-                            new TrangChu().setVisible(true);
+//                            new TrangChu().setVisible(true);
+                            TrangChu trangchu =  new TrangChu(txtUse.getText());
+//                            trangchu.main(info);
+//                            trangchu.TenTaiKhoan = jtf_tentk.getText();
+                            trangchu.setVisible(true);
                         }
                     });
                 }                

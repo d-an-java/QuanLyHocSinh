@@ -8,11 +8,9 @@ package GUI;
 import DAO.DiemDAO;
 import DAO.HocKyDAO;
 import DAO.HocSinhDAO;
-import DAO.LopDAO;
 import Entity.Diem;
 import Entity.HocKy;
 import Entity.HocSinh;
-import Entity.Lop;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -29,6 +27,7 @@ public class DanhSachHocSinh extends javax.swing.JFrame {
      */
     public DanhSachHocSinh() {
         initComponents();
+        setResizable(false); 
         LoadData();
     }
 
@@ -51,6 +50,7 @@ public class DanhSachHocSinh extends javax.swing.JFrame {
         jtf_lop = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jcb_hocky = new javax.swing.JComboBox();
+        jbtn_thoat2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Danh Sách Học Sinh");
@@ -103,6 +103,19 @@ public class DanhSachHocSinh extends javax.swing.JFrame {
             }
         });
 
+        jbtn_thoat2.setBackground(new java.awt.Color(255, 102, 0));
+        jbtn_thoat2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jbtn_thoat2.setText("Thoát");
+        jbtn_thoat2.setToolTipText("");
+        jbtn_thoat2.setMaximumSize(new java.awt.Dimension(95, 23));
+        jbtn_thoat2.setMinimumSize(new java.awt.Dimension(95, 23));
+        jbtn_thoat2.setPreferredSize(new java.awt.Dimension(95, 23));
+        jbtn_thoat2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_thoat2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -117,9 +130,11 @@ public class DanhSachHocSinh extends javax.swing.JFrame {
                         .addComponent(jtf_lop, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(40, 40, 40)
                 .addComponent(jbt_timkiem)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(117, 117, 117)
                 .addComponent(jcb_hocky, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(126, 126, 126))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbtn_thoat2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,7 +143,8 @@ public class DanhSachHocSinh extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jbt_timkiem)
-                        .addComponent(jcb_hocky, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jcb_hocky, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtn_thoat2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -406,6 +422,12 @@ public class DanhSachHocSinh extends javax.swing.JFrame {
         jtb_dshocsinh.getColumnModel().getColumn(4).setPreferredWidth(100);
     }//GEN-LAST:event_jcb_hockyItemStateChanged
 
+    private void jbtn_thoat2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_thoat2ActionPerformed
+        // TODO add your handling code here:
+        setVisible(false); //you can't see me!
+        dispose();
+    }//GEN-LAST:event_jbtn_thoat2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -449,6 +471,9 @@ public class DanhSachHocSinh extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbt_timkiem;
+    private javax.swing.JButton jbtn_thoat;
+    private javax.swing.JButton jbtn_thoat1;
+    private javax.swing.JButton jbtn_thoat2;
     private javax.swing.JComboBox jcb_hocky;
     private javax.swing.JTable jtb_dshocsinh;
     private javax.swing.JTextField jtf_lop;

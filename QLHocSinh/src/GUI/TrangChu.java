@@ -5,7 +5,10 @@
  */
 package GUI;
 
+import DAO.TaiKhoanDAO;
+import Entity.TaiKhoan;
 import java.text.ParseException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,12 +17,32 @@ import java.util.logging.Logger;
  * @author Vinh
  */
 public class TrangChu extends javax.swing.JFrame {
-
+    
+//    public static String  TenTK =null;
+    public static String TenTK =null;
     /**
      * Creates new form TrangChu
      */
-    public TrangChu() {
+    public TrangChu(String TenTaiKhoan) {
+        TenTK = TenTaiKhoan;
         initComponents();
+//        jtb_tentaikhoan.setText(TenTaiKhoan);
+//        String ttk = TenTaiKhoan;
+        setResizable(false); 
+        Loaddata();
+    }
+    
+    public void Loaddata(){
+//        jtb_tentaikhoan.setText(TenTaiKhoan);
+        
+        if(TenTK != null){
+            List<TaiKhoan> tk  = TaiKhoanDAO.layThongTinTaiKhoan(TenTK);
+            String chucvu = "Giáo Viên";
+            if(tk.get(0).getchucvu() == 2)
+                    chucvu = "Giáo Vụ";
+            jtb_tentaikhoan.setText("Tên : "+tk.get(0).gettentaikhoan()+", Chức vụ : "+ chucvu);
+        }
+        
     }
 
     /**
@@ -43,9 +66,24 @@ public class TrangChu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jtb_thoat = new javax.swing.JButton();
         jtb_dangxuat = new javax.swing.JButton();
+        jtb_tentaikhoan = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Trang Chủ");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+            public void windowDeactivated(java.awt.event.WindowEvent evt) {
+                formWindowDeactivated(evt);
+            }
+            public void windowDeiconified(java.awt.event.WindowEvent evt) {
+                formWindowDeiconified(evt);
+            }
+        });
 
         TRANGCHU.setToolTipText("TRANG CHỦ");
 
@@ -151,6 +189,9 @@ public class TrangChu extends javax.swing.JFrame {
             }
         });
 
+        jtb_tentaikhoan.setBackground(new java.awt.Color(204, 255, 204));
+        jtb_tentaikhoan.setText("Tên Tài Khoàn");
+
         javax.swing.GroupLayout TRANGCHULayout = new javax.swing.GroupLayout(TRANGCHU);
         TRANGCHU.setLayout(TRANGCHULayout);
         TRANGCHULayout.setHorizontalGroup(
@@ -158,19 +199,21 @@ public class TrangChu extends javax.swing.JFrame {
             .addGroup(TRANGCHULayout.createSequentialGroup()
                 .addGroup(TRANGCHULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(TRANGCHULayout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33))
-                    .addGroup(TRANGCHULayout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addGroup(TRANGCHULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jbtn_bangdiemmonhoc, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
                             .addComponent(jbtn_hosohocsinh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnMonHoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(TRANGCHULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jbtn_baocaotongketmon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbtn_danhsachlop, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jbtn_danhsachlop, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(TRANGCHULayout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(jtb_tentaikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)))
                 .addGroup(TRANGCHULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TRANGCHULayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -190,11 +233,16 @@ public class TrangChu extends javax.swing.JFrame {
         TRANGCHULayout.setVerticalGroup(
             TRANGCHULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TRANGCHULayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addGroup(TRANGCHULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtb_thoat, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtb_dangxuat, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(TRANGCHULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(TRANGCHULayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(TRANGCHULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtb_thoat, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtb_dangxuat, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(TRANGCHULayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jtb_tentaikhoan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(TRANGCHULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(TRANGCHULayout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -211,14 +259,14 @@ public class TrangChu extends javax.swing.JFrame {
                                 .addComponent(btnMonHoc, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(TRANGCHULayout.createSequentialGroup()
                                 .addGap(28, 28, 28)
-                                .addComponent(jbtn_baocaotongketmon1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(65, 65, 65))
+                                .addComponent(jbtn_baocaotongketmon1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(TRANGCHULayout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addComponent(jbtn_danhsachlop, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46)
                         .addComponent(jbtn_baocaotongketmon, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(13, 13, 13))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -229,7 +277,9 @@ public class TrangChu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TRANGCHU, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(TRANGCHU, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         TRANGCHU.getAccessibleContext().setAccessibleParent(TRANGCHU);
@@ -301,11 +351,20 @@ public class TrangChu extends javax.swing.JFrame {
 
     private void jtb_dangxuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtb_dangxuatActionPerformed
         // TODO add your handling code here:
-        Login lg = new Login();
-        lg.setLocationRelativeTo(null);
-        lg.setVisible(true);
-        setVisible(false); //you can't see me!
-        dispose();
+         this.setVisible(false);
+        this.dispose();
+        this.setEnabled(false);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+               DangNhap lg = new DangNhap();
+               
+               lg.setVisible(true);
+       
+                   
+            }
+        });     
+        this.setVisible(false); //you can't see me!
+        this.dispose();
     }//GEN-LAST:event_jtb_dangxuatActionPerformed
 
     private void btnMonHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMonHocActionPerformed
@@ -314,6 +373,24 @@ public class TrangChu extends javax.swing.JFrame {
         mh.setLocationRelativeTo(null);
         mh.setVisible(true);
     }//GEN-LAST:event_btnMonHocActionPerformed
+
+    private void formWindowDeactivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowDeactivated
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowDeactivated
+
+    private void formWindowDeiconified(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowDeiconified
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowDeiconified
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_formWindowClosed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -341,11 +418,11 @@ public class TrangChu extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(TrangChu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TrangChu().setVisible(true);
+                String huy = TenTK;
+                new TrangChu(huy).setVisible(true);
             }
         });
     }
@@ -362,6 +439,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JButton jbtn_danhsachlop;
     private javax.swing.JButton jbtn_hosohocsinh;
     private javax.swing.JButton jtb_dangxuat;
+    private javax.swing.JButton jtb_tentaikhoan;
     private javax.swing.JButton jtb_thoat;
     // End of variables declaration//GEN-END:variables
 }
