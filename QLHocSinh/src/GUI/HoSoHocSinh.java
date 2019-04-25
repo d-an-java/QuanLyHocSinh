@@ -511,7 +511,7 @@ public class HoSoHocSinh extends javax.swing.JFrame {
                                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                                 Date date3 = new Date();;
                                 try {
-                                    date3 = sdf.parse("01/01/2003");
+                                    date3 = sdf.parse("01/01/1999");
                                 } catch (ParseException ex) {
                                     Logger.getLogger(HoSoHocSinh.class.getName()).log(Level.SEVERE, null, ex);
                                 }
