@@ -508,6 +508,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value=" "/>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtf_diemheso1KeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
@@ -523,6 +526,7 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtf_diemheso2ActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtf_diemheso2KeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
@@ -537,6 +541,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value=" "/>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtf_diemheso3KeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="jcb_lop">
           <Properties>

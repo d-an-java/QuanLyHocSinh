@@ -6,9 +6,12 @@
 package GUI;
 
 import DAO.HocSinhDAO;
+import DAO.KhoiDAO;
 import DAO.LopDAO;
 import Entity.HocSinh;
+import Entity.Khoi;
 import Entity.Lop;
+import java.awt.event.KeyEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -202,11 +205,11 @@ public class HoSoHocSinh extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtf_mahocsinhtk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtn_thoat, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbt_lammoi, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jButton5.setBackground(new java.awt.Color(255, 0, 0));
@@ -263,6 +266,14 @@ public class HoSoHocSinh extends javax.swing.JFrame {
         jrb_gtnu.setText("Nữ");
 
         jtf_hoten.setText(" ");
+        jtf_hoten.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtf_hotenKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtf_hotenKeyTyped(evt);
+            }
+        });
 
         jrb_gtnam.setText("Nam ");
 
@@ -466,50 +477,95 @@ public class HoSoHocSinh extends javax.swing.JFrame {
     
     private void jbt_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbt_themActionPerformed
         // TODO add your handling code here:
-        String hoten = jtf_hoten.getText();
-        String diachi = jtf_diachi.getText();
-        String email = jtf_email.getText();
-        if(email.indexOf('@') < 0)
-            JOptionPane.showMessageDialog(this, "Email không hợp lệ", "Thông báo", JOptionPane.WARNING_MESSAGE);
-        else if(email.indexOf('.') < 0)
-            JOptionPane.showMessageDialog(this, "Email không hợp lệ", "Thông báo", JOptionPane.WARNING_MESSAGE);
-        else {
-            SimpleDateFormat sdft = new SimpleDateFormat("dd/MM/yyyy");
-            String ngaysinh = sdft.format(jdc_ngaysinh.getDate());//select date 
-            String gioitinh = "Nữ";
-            if(jrb_gtnam.isSelected())
+        String malop =  jcb_lop.getSelectedItem().toString();
+        List<Lop> mLop = LopDAO.layDanhSachLop(malop);
+        int mkhoi = KhoiDAO.LaySiSoHSToiDa(mLop.get(0).getkhoi());
+        if(mLop.size() > 0)
+        {
+            if(mkhoi != -1)
             {
-                gioitinh = "Nam";
-            }
-            String malop =  jcb_lop.getSelectedItem().toString();
+                int siso = mLop.get(0).getsiso();
+                if(siso < mkhoi)
+                {
+                    String hoten = jtf_hoten.getText();
+                    String diachi = jtf_diachi.getText();
+                    String email = jtf_email.getText();
+                    if(email.indexOf('@') < 0)
+                        JOptionPane.showMessageDialog(this, "Email không hợp lệ", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                    else if(email.indexOf('.') < 0)
+                        JOptionPane.showMessageDialog(this, "Email không hợp lệ", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                    else {
+                        SimpleDateFormat sdft = new SimpleDateFormat("dd/MM/yyyy");
+                        String ngaysinh = sdft.format(jdc_ngaysinh.getDate());//select date 
+                        
+                        if (ngaysinh.matches("([0-9]{2})/([0-9]{2})/([0-9]{4})")) // for yyyy/MM/dd format
+                        {
+                            Date date2 = jdc_ngaysinh.getDate();
+                            Date date1 = new Date();
 
-            SimpleDateFormat sdft1 = new SimpleDateFormat("dd-MM-yyyy");
+                            if(date1.before(date2)){
+                                JOptionPane.showMessageDialog(this, "Ngày Sinh của bạn lớn hơn ngày hiện Tại !", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                            }
+                            else 
+                            {
+                                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                                Date date3 = new Date();;
+                                try {
+                                    date3 = sdf.parse("01/01/2003");
+                                } catch (ParseException ex) {
+                                    Logger.getLogger(HoSoHocSinh.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                                if(date2.before(date3))
+                                    JOptionPane.showMessageDialog(this, "Ngày Sinh của bạn Lớn Hơn tuổi Quy Định !", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                                else
+                                {
+                                     String gioitinh = "Nữ";
+                                    if(jrb_gtnam.isSelected())
+                                    {
+                                        gioitinh = "Nam";
+                                    }
 
-            Date date = new Date();
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY");
-            String nam = simpleDateFormat.format(date).toUpperCase();
 
-            List<HocSinh> lop = HocSinhDAO.LopCoBaoNhieuHocSinh(malop);
-            int sohocsinh = 1;
-            for (int i = 0; i < lop.size(); i++) {
-                sohocsinh++;
-            }   
-            String mahs = "";
-            if(sohocsinh < 10)
-                mahs = "0"+String.valueOf(sohocsinh);
-            else
-                mahs = String.valueOf(sohocsinh);
-            String mahocsinh = nam.substring(2)+ malop.substring(0, 2) + malop.substring(2 + 1) +  mahs ;     
-            HocSinh hs = new HocSinh(hoten, ngaysinh, gioitinh, diachi, email, malop, mahocsinh);
-            boolean result = HocSinhDAO.themHocSinh(hs);
-            if (result) {           
-                LoadData();
-                lamMoi();
-            } else {
-                JOptionPane.showMessageDialog(this, "Thêm thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
-            }
+                                    SimpleDateFormat sdft1 = new SimpleDateFormat("dd-MM-yyyy");
+
+                                    Date date = new Date();
+                                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY");
+                                    String nam = simpleDateFormat.format(date).toUpperCase();
+
+                                    List<HocSinh> lop = HocSinhDAO.LopCoBaoNhieuHocSinh(malop);
+                                    int sohocsinh = 1;
+                                    for (int i = 0; i < lop.size(); i++) {
+                                        sohocsinh++;
+                                    }   
+                                    String mahs = "";
+                                    if(sohocsinh < 10)
+                                        mahs = "0"+String.valueOf(sohocsinh);
+                                    else
+                                        mahs = String.valueOf(sohocsinh);
+                                    String mahocsinh = nam.substring(2)+ malop.substring(0, 2) + malop.substring(2 + 1) +  mahs ;     
+                                    HocSinh hs = new HocSinh(hoten, ngaysinh, gioitinh, diachi, email, malop, mahocsinh);
+                                    boolean result = HocSinhDAO.themHocSinh(hs);
+                                    if (result) {           
+                                        LoadData();
+                                        lamMoi();
+                                    } else {
+                                        JOptionPane.showMessageDialog(this, "Thêm thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                                    }
+                                }
+                               
+                            }                      
+                        }
+                        else
+                            JOptionPane.showMessageDialog(this, "Ngày sinh Không đúng quy định", "Thông báo", JOptionPane.WARNING_MESSAGE);                      
+                    }
+                }else
+                    JOptionPane.showMessageDialog(this, "Sỉ Số Lớp Đã Đủ Không thể Thêm Học Sinh Mới Vào", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            }else
+             JOptionPane.showMessageDialog(this, "Thêm thất bại, Vui lòng kiểm trả  lại thông tin 1", "Thông báo", JOptionPane.WARNING_MESSAGE);    
         }
-       
+        else
+             JOptionPane.showMessageDialog(this, "Thêm thất bại, Vui lòng kiểm trả  lại thông tin", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                 
     }//GEN-LAST:event_jbt_themActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -657,6 +713,18 @@ public class HoSoHocSinh extends javax.swing.JFrame {
         // TODO add your handling code here:
        lamMoi();
     }//GEN-LAST:event_jbt_lammoiActionPerformed
+
+    private void jtf_hotenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_hotenKeyPressed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_jtf_hotenKeyPressed
+
+    private void jtf_hotenKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_hotenKeyTyped
+        // TODO add your handling code here:
+         char  c =evt.getKeyChar();
+        if((Character.isDigit(c) || (c== KeyEvent.VK_BACK_SPACE) || c== KeyEvent.VK_DELETE ))
+            evt.consume();
+    }//GEN-LAST:event_jtf_hotenKeyTyped
 
     /**
      * @param args the command line arguments

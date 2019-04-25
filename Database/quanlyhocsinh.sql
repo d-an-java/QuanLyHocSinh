@@ -11,7 +11,7 @@
  Target Server Version : 100138
  File Encoding         : 65001
 
- Date: 19/04/2019 15:28:32
+ Date: 25/04/2019 16:09:25
 */
 
 SET NAMES utf8mb4;
@@ -40,19 +40,43 @@ CREATE TABLE `diem`  (
   CONSTRAINT `diem_ibfk_2` FOREIGN KEY (`mamonhoc`) REFERENCES `mon` (`mamon`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `diem_ibfk_3` FOREIGN KEY (`mahocky`) REFERENCES `hocky` (`mahocky`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `diem_ibfk_4` FOREIGN KEY (`malop`) REFERENCES `lop` (`malop`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of diem
 -- ----------------------------
-INSERT INTO `diem` VALUES (7, '1910101', '10a1', 'toan', '2018_2019_HK1', 9.50, 9.00, 10.00, 10.00);
+INSERT INTO `diem` VALUES (7, '1910101', '10a1', 'toan', '2018_2019_HK1', 4.00, 9.00, 3.00, 3.00);
 INSERT INTO `diem` VALUES (8, '1910102', '10a1', 'toan', '2018_2019_HK1', 7.33, 7.00, 8.00, 9.50);
 INSERT INTO `diem` VALUES (10, '1910101', '10a1', 'ly', '2018_2019_HK1', 7.00, 8.00, 5.00, 8.00);
 INSERT INTO `diem` VALUES (11, '1910102', '10a1', 'ly', '2018_2019_HK1', 7.50, 7.00, 8.50, 9.00);
 INSERT INTO `diem` VALUES (12, '1910201', '10a2', 'toan', '2018_2019_HK1', 7.50, 7.00, 8.50, 6.00);
 INSERT INTO `diem` VALUES (13, '1910201', '10a2', 'ly', '2018_2019_HK1', 7.67, 7.00, 9.00, 6.50);
-INSERT INTO `diem` VALUES (14, '1910101', '10a1', 'van', '2018_2019_HK1', 8.67, 9.50, 7.00, 6.50);
+INSERT INTO `diem` VALUES (14, '1910101', '10a1', 'van', '2018_2019_HK1', 9.00, 9.00, 9.00, 9.00);
 INSERT INTO `diem` VALUES (15, '1910201', '10a2', 'sinh', '2018_2019_HK1', 8.67, 9.00, 8.00, 0.00);
+INSERT INTO `diem` VALUES (16, '1910101', '10a1', 'hoa', '2018_2019_HK1', 7.00, 7.00, 7.00, 7.00);
+INSERT INTO `diem` VALUES (17, '1910101', '10a1', 'sinh', '2018_2019_HK1', 7.00, 7.00, 7.00, 7.00);
+INSERT INTO `diem` VALUES (18, '1910101', '10a1', 'su', '2018_2019_HK1', 7.00, 7.00, 7.00, 7.00);
+INSERT INTO `diem` VALUES (19, '1910101', '10a1', 'dia', '2018_2019_HK1', 7.00, 7.00, 7.00, 7.00);
+INSERT INTO `diem` VALUES (20, '1910101', '10a1', 'daoduc', '2018_2019_HK1', 7.00, 7.00, 7.00, 7.00);
+INSERT INTO `diem` VALUES (21, '1910101', '10a1', 'theduc', '2018_2019_HK1', 7.00, 7.00, 7.00, 7.00);
+INSERT INTO `diem` VALUES (22, '1910301', '10a3', 'sinh', '2018_2019_HK1', 5.67, 6.00, 5.00, 9.00);
+
+-- ----------------------------
+-- Table structure for giaovu
+-- ----------------------------
+DROP TABLE IF EXISTS `giaovu`;
+CREATE TABLE `giaovu`  (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `diemchuandatmon` float(10, 2) NOT NULL,
+  `tuoitoida` int(10) NOT NULL,
+  `tuoitoithieu` int(10) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of giaovu
+-- ----------------------------
+INSERT INTO `giaovu` VALUES (1, 5.00, 15, 20);
 
 -- ----------------------------
 -- Table structure for hocky
@@ -89,7 +113,7 @@ CREATE TABLE `hocsinh`  (
   INDEX `lop`(`lop`) USING BTREE,
   INDEX `mahocsinh`(`mahocsinh`) USING BTREE,
   CONSTRAINT `hocsinh_ibfk_1` FOREIGN KEY (`lop`) REFERENCES `lop` (`malop`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of hocsinh
@@ -98,6 +122,11 @@ INSERT INTO `hocsinh` VALUES (2, '1910101', '10a1', 'Ngô Nhật Huy', '30/08/19
 INSERT INTO `hocsinh` VALUES (4, '1910102', '10a1', ' Hoang', '23/04/2019', 'N?', 'Quan 3', ' king@gmail.com');
 INSERT INTO `hocsinh` VALUES (6, '1910103', '10a1', 'Chau hai Hung', '15/06/1992', 'Nam', ' Quan 6', ' haihung@gmail.com');
 INSERT INTO `hocsinh` VALUES (7, '1910201', '10a2', 'Nguyen phu vinh', '16/01/2003', 'N?', ' Quan 7', ' phuvinh@gmail.com');
+INSERT INTO `hocsinh` VALUES (8, '1910301', '10a3', 'Pham Tan', '23/01/2003', 'Nam', ' Quan 3', ' tan@gmail.com');
+INSERT INTO `hocsinh` VALUES (9, '1910202', '10a2', ' Long', '07/01/2004', 'Nam', ' 56454', ' qeqe2e2e@com.on');
+INSERT INTO `hocsinh` VALUES (10, '1910203', '10a2', 'Phi', '01/01/2003', 'Nữ', 'quan 1', 'qqqq @con .com');
+INSERT INTO `hocsinh` VALUES (11, '1910104', '10a1', 'Nguyễn Nhật Hữu', '10/11/2003', 'Nữ', ' quận 12', ' huy@gmail.com');
+INSERT INTO `hocsinh` VALUES (12, '1910105', '10a1', ' ', '01/01/2003', 'Nữ', ' ', ' huy@huy.com');
 
 -- ----------------------------
 -- Table structure for khoi
@@ -106,15 +135,16 @@ DROP TABLE IF EXISTS `khoi`;
 CREATE TABLE `khoi`  (
   `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `tenkhoi` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `sisotoida` int(10) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of khoi
 -- ----------------------------
-INSERT INTO `khoi` VALUES (1, 'lớp 10');
-INSERT INTO `khoi` VALUES (2, 'lớp 11');
-INSERT INTO `khoi` VALUES (3, 'lớp 12');
+INSERT INTO `khoi` VALUES (1, 'lớp 10', 41);
+INSERT INTO `khoi` VALUES (2, 'lớp 11', 46);
+INSERT INTO `khoi` VALUES (3, 'lớp 12', 40);
 
 -- ----------------------------
 -- Table structure for lop
@@ -130,20 +160,20 @@ CREATE TABLE `lop`  (
   INDEX `khoi`(`khoi`) USING BTREE,
   INDEX `malop`(`malop`) USING BTREE,
   CONSTRAINT `lop_ibfk_1` FOREIGN KEY (`khoi`) REFERENCES `khoi` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of lop
 -- ----------------------------
-INSERT INTO `lop` VALUES (1, '10a1', '10 A1', 1, 35);
-INSERT INTO `lop` VALUES (2, '10a2', '10 A2', 1, 36);
-INSERT INTO `lop` VALUES (3, '10a3', '10 A3', 1, 36);
-INSERT INTO `lop` VALUES (4, '10a4', '10 A4', 1, 36);
-INSERT INTO `lop` VALUES (5, '11a1', '11 A1', 2, 36);
-INSERT INTO `lop` VALUES (6, '11a2', '11 A2', 2, 40);
-INSERT INTO `lop` VALUES (7, '11a3', '11 A3', 2, 39);
-INSERT INTO `lop` VALUES (8, '12a1', '12 A1', 3, 40);
-INSERT INTO `lop` VALUES (9, '12a2', '12 A2', 3, 38);
+INSERT INTO `lop` VALUES (1, '10a1', '10 A1', 1, 3);
+INSERT INTO `lop` VALUES (2, '10a2', '10 A2', 1, 1);
+INSERT INTO `lop` VALUES (3, '10a3', '10 A3', 1, 1);
+INSERT INTO `lop` VALUES (4, '10a4', '10 A4', 1, 0);
+INSERT INTO `lop` VALUES (5, '11a1', '11 A1', 2, 0);
+INSERT INTO `lop` VALUES (6, '11a2', '11 A2', 2, 0);
+INSERT INTO `lop` VALUES (7, '11a3', '11 A3', 2, 0);
+INSERT INTO `lop` VALUES (8, '12a1', '12 A1', 3, 0);
+INSERT INTO `lop` VALUES (9, '12a2', '12 A2', 3, 0);
 
 -- ----------------------------
 -- Table structure for mon
@@ -156,7 +186,7 @@ CREATE TABLE `mon`  (
   `mamon` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `mamon`(`mamon`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of mon

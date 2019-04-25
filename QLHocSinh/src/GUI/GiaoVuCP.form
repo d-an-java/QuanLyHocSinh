@@ -123,10 +123,19 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jtf_diemchuandatmon">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtf_diemchuandatmonKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jtf_tuoitoida">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtf_tuoitoidaKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jtf_tuoitoithieu">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtf_tuoitoithieuKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jbt_thoat">
           <Properties>

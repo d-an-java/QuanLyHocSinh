@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="Entity.Khoi" table="khoi" >
+        <id name="id" type="int">
+        <column name="id" length="11" />
+        <generator class="assigned" />
+        </id>
+         <property name="tenkhoi" type="string">
+        <column name="tenkhoi" length="255" />
+        </property>
+        <property name="sisotoida" type="int">
+        <column name="sisotoida" length="10" />
+        </property>  
+        
+    </class>
+
+</hibernate-mapping>

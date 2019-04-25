@@ -13,7 +13,7 @@ public class HocKy implements java.io.Serializable{
     private int id;
     private String tenhocky;
     private String mahocky;
-     public HocKy() {
+    public HocKy() {
         this.id = 0;
         this.tenhocky = ""; 
         this.mahocky = "";

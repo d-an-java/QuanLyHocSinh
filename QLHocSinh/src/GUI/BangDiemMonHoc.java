@@ -36,6 +36,7 @@ import com.itextpdf.text.pdf.CMYKColor;
 import com.itextpdf.text.pdf.PdfWriter;
  import com.itextpdf.text.pdf.PdfPCell;
 	import com.itextpdf.text.pdf.PdfPTable;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -352,6 +353,11 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         jLabel6.setText("Điểm 15'");
 
         jtf_diemheso1.setText(" ");
+        jtf_diemheso1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtf_diemheso1KeyTyped(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Điểm 1tiết");
@@ -362,11 +368,21 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
                 jtf_diemheso2ActionPerformed(evt);
             }
         });
+        jtf_diemheso2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtf_diemheso2KeyTyped(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("Điểm thi");
 
         jtf_diemheso3.setText(" ");
+        jtf_diemheso3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtf_diemheso3KeyTyped(evt);
+            }
+        });
 
         jcb_lop.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jcb_lop.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -905,6 +921,33 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         // TODO add your handling code here:
         jbt_inbangdiem.setEnabled(false);
     }//GEN-LAST:event_jrb_hockyFocusGained
+
+    private void jtf_diemheso1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_diemheso1KeyTyped
+        // TODO add your handling code here:
+        char  c =evt.getKeyChar();
+        if(!(Character.isDigit(c)  || (c== KeyEvent.VK_BACK_SPACE) || c== KeyEvent.VK_DELETE ))
+            evt.consume();
+        if (jtf_diemheso1.getText().length() >= 3 ) // limit textfield to 3 characters
+            evt.consume(); 
+    }//GEN-LAST:event_jtf_diemheso1KeyTyped
+
+    private void jtf_diemheso2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_diemheso2KeyTyped
+        // TODO add your handling code here:
+        char  c =evt.getKeyChar();
+        if(!(Character.isDigit(c)  || (c== KeyEvent.VK_BACK_SPACE) || c== KeyEvent.VK_DELETE ))
+            evt.consume();
+        if (jtf_diemheso2.getText().length() >= 3 ) // limit textfield to 3 characters
+            evt.consume(); 
+    }//GEN-LAST:event_jtf_diemheso2KeyTyped
+
+    private void jtf_diemheso3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_diemheso3KeyTyped
+        // TODO add your handling code here:
+        char  c =evt.getKeyChar();
+        if(!(Character.isDigit(c)  || (c== KeyEvent.VK_BACK_SPACE) || c== KeyEvent.VK_DELETE ))
+            evt.consume();
+        if (jtf_diemheso3.getText().length() >= 3 ) // limit textfield to 3 characters
+            evt.consume(); 
+    }//GEN-LAST:event_jtf_diemheso3KeyTyped
 
     /**
      * @param args the command line arguments

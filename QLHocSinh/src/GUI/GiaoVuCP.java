@@ -7,6 +7,7 @@ package GUI;
 
 import DAO.GiaoVuDAO;
 import Entity.GiaoVu;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -91,6 +92,24 @@ public class GiaoVuCP extends javax.swing.JFrame {
         jLabel2.setText("Tuổi Học Sinh tối đa");
 
         jLabel3.setText("Tuổi Học Sinh Tối Thiểu");
+
+        jtf_diemchuandatmon.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtf_diemchuandatmonKeyTyped(evt);
+            }
+        });
+
+        jtf_tuoitoida.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtf_tuoitoidaKeyTyped(evt);
+            }
+        });
+
+        jtf_tuoitoithieu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtf_tuoitoithieuKeyTyped(evt);
+            }
+        });
 
         jbt_thoat.setBackground(new java.awt.Color(255, 102, 0));
         jbt_thoat.setText("Thoát");
@@ -244,6 +263,33 @@ public class GiaoVuCP extends javax.swing.JFrame {
         jtf_tuoitoithieu.setText((String)String.valueOf(model.getValueAt(index, 3)));
         jtf_tuoitoida.setText((String)String.valueOf(model.getValueAt(index, 2)));
     }//GEN-LAST:event_jtb_giaovuMouseClicked
+
+    private void jtf_diemchuandatmonKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_diemchuandatmonKeyTyped
+        // TODO add your handling code here:
+        char  c =evt.getKeyChar();
+        if(!(Character.isDigit(c)  || (c== KeyEvent.VK_BACK_SPACE) || c== KeyEvent.VK_DELETE ))
+            evt.consume();
+        if (jtf_diemchuandatmon.getText().length() >= 3 ) // limit textfield to 3 characters
+            evt.consume(); 
+    }//GEN-LAST:event_jtf_diemchuandatmonKeyTyped
+
+    private void jtf_tuoitoithieuKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_tuoitoithieuKeyTyped
+        // TODO add your handling code here:
+         char  c =evt.getKeyChar();
+        if(!(Character.isDigit(c)  || (c== KeyEvent.VK_BACK_SPACE) || c== KeyEvent.VK_DELETE ))
+            evt.consume();
+        if (jtf_tuoitoithieu.getText().length() >= 3 ) // limit textfield to 3 characters
+            evt.consume(); 
+    }//GEN-LAST:event_jtf_tuoitoithieuKeyTyped
+
+    private void jtf_tuoitoidaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_tuoitoidaKeyTyped
+        // TODO add your handling code here:
+        char  c =evt.getKeyChar();
+        if(!(Character.isDigit(c)  || (c== KeyEvent.VK_BACK_SPACE) || c== KeyEvent.VK_DELETE ))
+            evt.consume();
+        if (jtf_tuoitoida.getText().length() >= 3 ) // limit textfield to 3 characters
+            evt.consume();
+    }//GEN-LAST:event_jtf_tuoitoidaKeyTyped
 
     /**
      * @param args the command line arguments

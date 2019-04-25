@@ -19,5 +19,6 @@
     <mapping resource="Entity/HocKy.hbm.xml"/>
     <mapping resource="Entity/Diem.hbm.xml"/>
     <mapping resource="Entity/GiaoVu.hbm.xml"/>
+    <mapping resource="Entity/Khoi.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
