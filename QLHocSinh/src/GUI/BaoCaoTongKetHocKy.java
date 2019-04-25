@@ -8,10 +8,31 @@ package GUI;
 import DAO.DiemDAO;
 import DAO.HocKyDAO;
 import DAO.HocSinhDAO;
+import DAO.LopDAO;
+import DAO.MonDAO;
 import Entity.Diem;
 import Entity.HocKy;
 import Entity.HocSinh;
+import Entity.Lop;
+import Entity.Mon;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.CMYKColor;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.text.DecimalFormat;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -96,6 +117,11 @@ public class BaoCaoTongKetHocKy extends javax.swing.JFrame {
         btnTim.setBackground(new java.awt.Color(255, 102, 0));
         btnTim.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnTim.setText("TÌM");
+        btnTim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("HỌC KỲ");
@@ -103,6 +129,11 @@ public class BaoCaoTongKetHocKy extends javax.swing.JFrame {
         btnInBangDiem.setBackground(new java.awt.Color(255, 102, 0));
         btnInBangDiem.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnInBangDiem.setText("IN BẢNG ĐIỂM");
+        btnInBangDiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInBangDiemActionPerformed(evt);
+            }
+        });
 
         jcb_hocky.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -138,30 +169,30 @@ public class BaoCaoTongKetHocKy extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(33, 33, 33)
                 .addComponent(txtHienThiHocKy, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGap(60, 60, 60)
+                .addComponent(btnInBangDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 118, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jbtn_thoat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnInBangDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnTim)
-                            .addComponent(jcb_hocky, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jLabel2)
-                        .addComponent(txtHienThiHocKy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnInBangDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbtn_thoat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(2, 2, 2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnTim)
+                        .addComponent(jcb_hocky, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2)
+                    .addComponent(txtHienThiHocKy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(8, 8, 8))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jbtn_thoat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnInBangDiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -196,72 +227,7 @@ public class BaoCaoTongKetHocKy extends javax.swing.JFrame {
 
     private void jcb_hockyItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcb_hockyItemStateChanged
         // TODO add your handling code here:
-        String hocky = jcb_hocky.getSelectedItem().toString().trim();
-        String hocky1 = hocky.substring(9, 13)+"_" ;
-        String hocky2 = hocky.substring(16, 20);
-        hocky = hocky1.concat(hocky2);
-        List<HocSinh> listResultSV;
-        String[] columns = new String [] {
-            "STT",
-            "Họ Tên",
-            "Lớp",
-            "TB Học Kỳ 1",
-            "TB Học Kỳ 2"
-        };
-        model = new DefaultTableModel(null , columns);
-
-        listResultSV = HocSinhDAO.layDanhSachHocSinh();
-
-        for (int i = 0; i < listResultSV.size(); i++) {
-            HocSinh hs = (HocSinh) listResultSV.get(i);
-            int stt = i;
-
-            String hk1 = hocky+"_HK1";
-            List<Diem> DiemHS1  = DiemDAO.DiemCuaHocSinh(hs.getmahocsinh(),hk1);
-            float tdhk1 = 0;
-            float dtbhk1 = 0 ;
-            if(DiemHS1.size() > 0)
-            {
-                for(int j = 0; j < DiemHS1.size(); j++ )
-                {
-                    Diem diem = (Diem) DiemHS1.get(j);
-                    tdhk1 += diem.getdiemtbmon();
-                }
-
-                if(DiemHS1.size()>0)
-                dtbhk1 = tdhk1/DiemHS1.size();
-            }
-
-            String hk2 = hocky+"_HK2";
-            List<Diem> DiemHS2  = DiemDAO.DiemCuaHocSinh(hs.getmahocsinh(),hk2);
-            float tdhk2 = 0;
-            float dtbhk2 = 0 ;
-            if(DiemHS2.size() > 0)
-            {
-                for(int j = 0; j < DiemHS2.size(); j++ )
-                {
-                    Diem diem = (Diem) DiemHS2.get(j);
-                    tdhk2 += diem.getdiemtbmon();
-                }
-                dtbhk2 = tdhk2/DiemHS2.size();
-            }
-
-            Object[] items = new Object[] {
-                stt++,
-                hs.getten(),
-                hs.getlop(),
-                dtbhk1,
-                dtbhk2
-            };
-            model.addRow(items);
-        }
-        jtb_baocaohk.setModel(model);
-        jtb_baocaohk.setRowHeight(30);
-        jtb_baocaohk.getColumnModel().getColumn(0).setPreferredWidth(100);
-        jtb_baocaohk.getColumnModel().getColumn(1).setPreferredWidth(200);
-        jtb_baocaohk.getColumnModel().getColumn(2).setPreferredWidth(150);
-        jtb_baocaohk.getColumnModel().getColumn(3).setPreferredWidth(100);
-        jtb_baocaohk.getColumnModel().getColumn(4).setPreferredWidth(100);
+       
     }//GEN-LAST:event_jcb_hockyItemStateChanged
 
     private void jbtn_thoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_thoatActionPerformed
@@ -270,6 +236,177 @@ public class BaoCaoTongKetHocKy extends javax.swing.JFrame {
         dispose();
 
     }//GEN-LAST:event_jbtn_thoatActionPerformed
+
+    private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
+        // TODO add your handling code here:
+        String jcbhocky = jcb_hocky.getSelectedItem().toString().trim();
+        String hocky1 = jcbhocky.substring(9, 13)+"_" ;
+        String hocky2 = jcbhocky.substring(16, 20);
+        
+        String hocky = hocky1.concat(hocky2);
+        String hk1 = hocky+"_HK2";
+        if( jcbhocky.substring(7, 8).equals("1"))
+            hk1 = hocky+"_HK1";
+        
+         
+        List<HocSinh> listResultSV;
+        String[] columns = new String [] {
+            "STT",
+            "Lớp",
+            "sỉ Số",
+            "Số Lượng Đạt",
+            "Tỉ Lệ"
+        };
+        model = new DefaultTableModel(null , columns);
+        
+        
+        List<Lop> listlop;
+        listlop  = LopDAO.layDanhSachLop();
+        for(int  i =0; i<listlop.size() ;i++)
+        {
+             Lop lop = (Lop) listlop.get(i);
+            //tim diem hs
+            listResultSV = HocSinhDAO.LopCoBaoNhieuHocSinh(lop.getmalop());
+            
+            int sohsdat = 0;
+            for (int j = 0; j < listResultSV.size(); j++) {
+                float dtbhk1 = 0 ;
+                HocSinh hs = (HocSinh) listResultSV.get(j);
+               
+                List<Mon> tongmon = MonDAO.layDanhSachMon();
+                float tdhk1 = 0;
+                boolean monkt = true;
+                boolean montv = true;
+                for (int k = 0; k < tongmon.size(); k++) {
+                    Mon mon = (Mon) tongmon.get(k);             
+                    List<Diem> DiemHS1  = DiemDAO.DiemCuaHocSinh(hs.getmahocsinh(),hk1,mon.getmamon());                                                     
+                    if(DiemHS1.size() > 0)
+                    {
+                        for(int m = 0; m < DiemHS1.size(); m++ )
+                        {
+                            if(mon.getmamon().equals("toan")   )
+                            {
+                                Diem diem = (Diem) DiemHS1.get(m);
+                                tdhk1 += diem.getdiemtbmon()*2;
+                                if(diem.getdiemtbmon() < 5)
+                                    montv = false;
+                            } else if(mon.getmamon().equals("van"))
+                            {
+                                Diem diem = (Diem) DiemHS1.get(m);
+                                tdhk1 += diem.getdiemtbmon()*2;
+                                if(diem.getdiemtbmon() < 5 && montv == false )
+                                    monkt = false;
+                            }
+                            else {
+                                 Diem diem = (Diem) DiemHS1.get(m);
+                            tdhk1 += diem.getdiemtbmon();
+                            }                        
+                        }                      
+                    }else monkt = false;
+                }
+                if(tongmon.size()>0)
+                        dtbhk1 = tdhk1/(tongmon.size()+2);
+                if (dtbhk1 > 5.0 && monkt == true)
+                    sohsdat++;
+            }           
+             
+             int stt = i;           
+             Object[] items = null;
+             if(lop.getsiso() == 0)
+             {  
+                   items = new Object[] {
+                    ++stt,
+                    lop.gettenlop(),
+                    lop.getsiso(),               
+                    "",               
+                    ""
+                };
+             }
+             else 
+             {
+                  DecimalFormat decimalFormat = new DecimalFormat("#.#####");
+                  String tile = String.valueOf( decimalFormat.format( (float)sohsdat/lop.getsiso()*100)) +" %";
+                   items = new Object[] {
+                    ++stt,
+                    lop.gettenlop(),
+                    lop.getsiso(),               
+                    sohsdat,               
+                    tile
+                };
+             }
+            
+            model.addRow(items);
+        }
+            
+        
+        jtb_baocaohk.setModel(model);
+        jtb_baocaohk.setRowHeight(30);
+        jtb_baocaohk.getColumnModel().getColumn(0).setPreferredWidth(100);
+        jtb_baocaohk.getColumnModel().getColumn(1).setPreferredWidth(200);
+        jtb_baocaohk.getColumnModel().getColumn(2).setPreferredWidth(150);
+        jtb_baocaohk.getColumnModel().getColumn(3).setPreferredWidth(100);
+        jtb_baocaohk.getColumnModel().getColumn(4).setPreferredWidth(100);
+    }//GEN-LAST:event_btnTimActionPerformed
+
+    private void btnInBangDiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInBangDiemActionPerformed
+        // TODO add your handling code here:
+        if (model != null)
+        {
+              Document document = new Document();
+
+            try {
+                    // khởi tạo một PdfWriter truyền vào document và FileOutputStream
+                PdfWriter.getInstance(document, new FileOutputStream("report\\baocaohocky\\baocaohocky.pdf" ));
+
+                // mở file để thực hiện viết
+                document.open();
+                 // thêm nội dung sử dụng add function
+                Paragraph title1 = new Paragraph("Bang Tong Ket Hoc Ky",
+                FontFactory.getFont(FontFactory.HELVETICA, 18, Font.BOLDITALIC, new CMYKColor(0, 255, 255, 17)));
+                title1.setAlignment(Element.ALIGN_CENTER);
+                document.add(title1);
+                //Khai báo 2 paragraph      
+                String jcbhocky = jcb_hocky.getSelectedItem().toString().trim();
+                String hocky = "Hoc Ky "+ jcbhocky.substring(7) ;
+                Paragraph lop = new Paragraph("Hoc Ky :  "+hocky);                                                  
+                document.add(lop);
+                //Khởi tạo một table có 3 cột
+                PdfPTable t = new PdfPTable(5);
+                t.setSpacingBefore(25);
+                t.setSpacingAfter(25);
+
+                PdfPCell c2 = new PdfPCell(new Phrase(" STT "));
+                t.addCell(c2);
+                PdfPCell c3 = new PdfPCell(new Phrase(" Lop "));
+                t.addCell(c3);
+                PdfPCell c4 = new PdfPCell(new Phrase(" Si So  "));
+                t.addCell(c4);
+                PdfPCell c5 = new PdfPCell(new Phrase(" So Luong Dat"));
+                t.addCell(c5);
+                PdfPCell c6 = new PdfPCell(new Phrase(" Ti Le "));
+                t.addCell(c6);
+                for(int count = 0; count < model.getRowCount(); count++)
+                {              
+                    t.addCell(model.getValueAt(count, 0).toString());
+                    t.addCell(model.getValueAt(count, 1).toString());
+                    t.addCell(model.getValueAt(count, 2).toString());
+                    t.addCell(model.getValueAt(count, 3).toString());
+                    t.addCell(model.getValueAt(count, 4).toString());    
+                }
+                document.add(t);
+                document.close();
+                // đóng file
+
+            } catch (DocumentException e) {
+                e.printStackTrace();
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(BaoCaoTongKetMon.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(this, "In Hoàn Tất", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else 
+             JOptionPane.showMessageDialog(this, "Vui Lòng Tìm Dữ Liệu", "Thông báo", JOptionPane.WARNING_MESSAGE);
+    }//GEN-LAST:event_btnInBangDiemActionPerformed
 
     /**
      * @param args the command line arguments

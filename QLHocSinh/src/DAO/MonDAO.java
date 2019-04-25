@@ -64,7 +64,7 @@ public class MonDAO {
      // sửa
     public static boolean capNhatMon(Mon mon) {
         List<Mon> mh = MonDAO.layThongTinMon(mon.getmamon());
-       if(mh == null)
+       if(mh.size() < 1)
            return false;
         mon.setid(mh.get(0).getid());
         Session session = HibernateUtil.getSessionFactory().openSession();

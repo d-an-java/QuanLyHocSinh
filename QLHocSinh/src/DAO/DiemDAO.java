@@ -42,6 +42,22 @@ public class DiemDAO {
         return dsDiem;
         
     }
+    
+      /// tìm học  sinh được chọn
+    public static List<Diem> DiemCuaHocSinh(String mahocsinh,String maHocKy,String maMon) {
+        List<Diem> dsDiem = null;
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        String hql = "from Diem where mahocsinh=:mahs and mahocky=:mahk and mamonhoc =:mamon";
+        Query query = session.createQuery(hql);
+        query.setParameter("mahs", mahocsinh);
+        query.setParameter("mahk", maHocKy);
+        query.setParameter("mamon", maMon);
+        dsDiem = query.list();
+        session.close();
+        return dsDiem;
+        
+    }
      
        /// tìm học  sinh được chọn
     public static List<Diem> layThongTinDiemCuaHocSinh(String malop,String mahocsinh,String maMon,String maHocKy) {

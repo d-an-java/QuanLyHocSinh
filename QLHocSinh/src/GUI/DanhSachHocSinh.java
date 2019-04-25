@@ -132,9 +132,9 @@ public class DanhSachHocSinh extends javax.swing.JFrame {
                 .addComponent(jbt_timkiem)
                 .addGap(117, 117, 117)
                 .addComponent(jcb_hocky, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(48, 48, 48)
                 .addComponent(jbtn_thoat2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,10 +163,11 @@ public class DanhSachHocSinh extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(366, 366, 366))
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 874, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGap(0, 95, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,8 +264,8 @@ public class DanhSachHocSinh extends javax.swing.JFrame {
         jtb_dshocsinh.setModel(model);
         jtb_dshocsinh.setRowHeight(30);
         jtb_dshocsinh.getColumnModel().getColumn(0).setPreferredWidth(100);
-        jtb_dshocsinh.getColumnModel().getColumn(1).setPreferredWidth(200);
-        jtb_dshocsinh.getColumnModel().getColumn(2).setPreferredWidth(150);
+        jtb_dshocsinh.getColumnModel().getColumn(1).setPreferredWidth(150);
+        jtb_dshocsinh.getColumnModel().getColumn(2).setPreferredWidth(100);
         jtb_dshocsinh.getColumnModel().getColumn(3).setPreferredWidth(100);
         jtb_dshocsinh.getColumnModel().getColumn(4).setPreferredWidth(100);
     }
@@ -471,8 +472,6 @@ public class DanhSachHocSinh extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbt_timkiem;
-    private javax.swing.JButton jbtn_thoat;
-    private javax.swing.JButton jbtn_thoat1;
     private javax.swing.JButton jbtn_thoat2;
     private javax.swing.JComboBox jcb_hocky;
     private javax.swing.JTable jtb_dshocsinh;

@@ -5,20 +5,65 @@
  */
 package GUI;
 
+import DAO.DiemDAO;
+import DAO.HocKyDAO;
+import DAO.HocSinhDAO;
+import DAO.LopDAO;
+import DAO.MonDAO;
+import Entity.Diem;
+import Entity.HocKy;
+import Entity.HocSinh;
+import Entity.Lop;
+import Entity.Mon;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.CMYKColor;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.text.DecimalFormat;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Vinh
  */
 public class BaoCaoTongKetMon extends javax.swing.JFrame {
 
+    DefaultTableModel model=null;
     /**
      * Creates new form BaoCaoTongKetMon
      */
     public BaoCaoTongKetMon() {
         initComponents();
         setResizable(false); 
+       LoadData();
     }
-
+    
+    void LoadData() {
+        jcb_hocky.removeAllItems();
+        List<HocKy> dshk = HocKyDAO.layDanhSachHocKy();
+        for (int i = 0; i < dshk.size(); i++) {
+            jcb_hocky.addItem(dshk.get(i).gettenhocky());
+        }    
+        
+        jcb_monhoc.removeAllItems();
+        List<Mon> dsMon = MonDAO.layDanhSachMon();
+        for (int i = 0; i < dsMon.size(); i++) {
+            jcb_monhoc.addItem(dsMon.get(i).getmamon());
+        }  
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,26 +74,23 @@ public class BaoCaoTongKetMon extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtb_baocaomon = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txtTim = new javax.swing.JTextField();
-        btnTim = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
-        txtHienThiMon = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtHienThiHocKy = new javax.swing.JTextField();
         btninBangDiem = new javax.swing.JButton();
         jbtn_thoat = new javax.swing.JButton();
+        jcb_hocky = new javax.swing.JComboBox();
+        btnTim = new javax.swing.JButton();
+        jcb_monhoc = new javax.swing.JComboBox<String>();
         jLabel1 = new javax.swing.JLabel();
-        btnGiaoVu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Báo Cáo Tổng Kết Môn");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtb_baocaomon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -67,7 +109,7 @@ public class BaoCaoTongKetMon extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtb_baocaomon);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -80,43 +122,11 @@ public class BaoCaoTongKetMon extends javax.swing.JFrame {
             }
         });
 
-        btnTim.setBackground(new java.awt.Color(255, 102, 0));
-        btnTim.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnTim.setText("TÌM");
-        btnTim.setMaximumSize(new java.awt.Dimension(95, 23));
-        btnTim.setMinimumSize(new java.awt.Dimension(95, 23));
-        btnTim.setPreferredSize(new java.awt.Dimension(95, 23));
-
-        jRadioButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jRadioButton1.setText("MÔN");
-
-        jRadioButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jRadioButton2.setText("HỌC KỲ");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
-            }
-        });
-
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("MÔN");
 
-        txtHienThiMon.setMinimumSize(new java.awt.Dimension(60, 20));
-        txtHienThiMon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtHienThiMonActionPerformed(evt);
-            }
-        });
-
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("HỌC KỲ");
-
-        txtHienThiHocKy.setPreferredSize(new java.awt.Dimension(60, 20));
-        txtHienThiHocKy.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtHienThiHocKyActionPerformed(evt);
-            }
-        });
 
         btninBangDiem.setBackground(new java.awt.Color(255, 102, 0));
         btninBangDiem.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -140,101 +150,100 @@ public class BaoCaoTongKetMon extends javax.swing.JFrame {
             }
         });
 
+        jcb_hocky.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcb_hockyItemStateChanged(evt);
+            }
+        });
+
+        btnTim.setBackground(new java.awt.Color(255, 102, 0));
+        btnTim.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnTim.setText("TÌM");
+        btnTim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimActionPerformed(evt);
+            }
+        });
+
+        jcb_monhoc.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
-                        .addGap(10, 10, 10)
-                        .addComponent(jRadioButton2)
-                        .addGap(26, 26, 26)
-                        .addComponent(btnTim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbtn_thoat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jcb_monhoc, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)
+                        .addComponent(jLabel4))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(10, 10, 10)
-                        .addComponent(txtTim, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(135, 135, 135)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtHienThiMon, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtHienThiHocKy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54)
-                        .addComponent(btninBangDiem)))
-                .addGap(25, 25, 25))
+                        .addComponent(txtTim, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jcb_hocky, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTim, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
+                .addComponent(btninBangDiem)
+                .addGap(35, 35, 35)
+                .addComponent(jbtn_thoat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtTim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(3, 3, 3)
-                            .addComponent(jLabel3))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(txtHienThiHocKy, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btninBangDiem))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(1, 1, 1)
-                            .addComponent(txtHienThiMon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(jcb_hocky, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(jcb_monhoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jRadioButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnTim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jbtn_thoat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(txtTim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnTim))
+                .addGap(37, 37, 37))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btninBangDiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbtn_thoat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel1.setText("BÁO CÁO TỔNG KẾT MÔN HỌC");
 
-        btnGiaoVu.setBackground(new java.awt.Color(255, 102, 0));
-        btnGiaoVu.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnGiaoVu.setText("GIÁO VỤ");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(187, 187, 187)
-                .addComponent(btnGiaoVu)
-                .addContainerGap())
             .addComponent(jScrollPane1)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(329, 329, 329)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(btnGiaoVu))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
         );
 
         pack();
@@ -245,20 +254,67 @@ public class BaoCaoTongKetMon extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTimActionPerformed
 
-    private void txtHienThiMonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHienThiMonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtHienThiMonActionPerformed
-
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
-
-    private void txtHienThiHocKyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHienThiHocKyActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtHienThiHocKyActionPerformed
-
     private void btninBangDiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btninBangDiemActionPerformed
         // TODO add your handling code here:
+        if (model != null)
+        {
+              Document document = new Document();
+
+            try {
+                    // khởi tạo một PdfWriter truyền vào document và FileOutputStream
+                PdfWriter.getInstance(document, new FileOutputStream("report\\baocaomon\\baocaomon.pdf" ));
+
+                // mở file để thực hiện viết
+                document.open();
+                 // thêm nội dung sử dụng add function
+                Paragraph title1 = new Paragraph("Bang Tong Ket Mon Hoc",
+                FontFactory.getFont(FontFactory.HELVETICA, 18, Font.BOLDITALIC, new CMYKColor(0, 255, 255, 17)));
+                title1.setAlignment(Element.ALIGN_CENTER);
+                document.add(title1);
+                //Khai báo 2 paragraph              
+                String jcbhocky = jcb_hocky.getSelectedItem().toString().trim();
+                String hocky = "Hoc Ky "+ jcbhocky.substring(7) ;
+                Paragraph hk = new Paragraph("Hoc Ky :  "+hocky);                                                   
+                document.add(hk);
+                Paragraph mon = new Paragraph("Mon :  "+jcb_monhoc.getSelectedItem().toString().trim());                                                  
+                document.add(mon);
+                //Khởi tạo một table có 3 cột
+                PdfPTable t = new PdfPTable(5);
+                t.setSpacingBefore(25);
+                t.setSpacingAfter(25);
+
+                PdfPCell c2 = new PdfPCell(new Phrase(" STT "));
+                t.addCell(c2);
+                PdfPCell c3 = new PdfPCell(new Phrase(" Lop "));
+                t.addCell(c3);
+                PdfPCell c4 = new PdfPCell(new Phrase(" Si So  "));
+                t.addCell(c4);
+                PdfPCell c5 = new PdfPCell(new Phrase(" So Luong Dat"));
+                t.addCell(c5);
+                PdfPCell c6 = new PdfPCell(new Phrase(" Ti Le "));
+                t.addCell(c6);
+                for(int count = 0; count < model.getRowCount(); count++)
+                {              
+                    t.addCell(model.getValueAt(count, 0).toString());
+                    t.addCell(model.getValueAt(count, 1).toString());
+                    t.addCell(model.getValueAt(count, 2).toString());
+                    t.addCell(model.getValueAt(count, 3).toString());
+                    t.addCell(model.getValueAt(count, 4).toString());    
+                }
+                document.add(t);
+                document.close();
+                // đóng file
+
+            } catch (DocumentException e) {
+                e.printStackTrace();
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(BaoCaoTongKetMon.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(this, "In Hoàn Tất", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else 
+             JOptionPane.showMessageDialog(this, "Vui Lòng Tìm Dữ Liệu", "Thông báo", JOptionPane.WARNING_MESSAGE);
+      
     }//GEN-LAST:event_btninBangDiemActionPerformed
 
     private void jbtn_thoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_thoatActionPerformed
@@ -266,6 +322,97 @@ public class BaoCaoTongKetMon extends javax.swing.JFrame {
         setVisible(false); //you can't see me!
         dispose();
     }//GEN-LAST:event_jbtn_thoatActionPerformed
+
+    private void jcb_hockyItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcb_hockyItemStateChanged
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jcb_hockyItemStateChanged
+
+    private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
+        // TODO add your handling code here:
+        String jcbhocky = jcb_hocky.getSelectedItem().toString().trim();
+        String hocky1 = jcbhocky.substring(9, 13)+"_" ;
+        String hocky2 = jcbhocky.substring(16, 20);
+
+        String hocky = hocky1.concat(hocky2);
+        String hk1 = hocky+"_HK2";
+        if( jcbhocky.substring(7, 8).equals("1"))
+        hk1 = hocky+"_HK1";
+
+        List<HocSinh> listResultSV;
+        String[] columns = new String [] {
+            "STT",
+            "Lớp",
+            "sỉ Số",
+            "Số Lượng Đạt",
+            "Tỉ Lệ"
+        };
+        model = new DefaultTableModel(null , columns);
+
+        List<Lop> listlop;
+        listlop  = LopDAO.layDanhSachLop();
+        for(int  i =0; i<listlop.size() ;i++)
+        {
+            Lop lop = (Lop) listlop.get(i);
+            //tim diem hs
+            listResultSV = HocSinhDAO.LopCoBaoNhieuHocSinh(lop.getmalop());
+
+            int sohsdat = 0;
+            for (int j = 0; j < listResultSV.size(); j++) {
+                HocSinh hs = (HocSinh) listResultSV.get(j);                
+                float tdhk1 = 0;
+                boolean monkt = true;
+       
+                List<Diem> DiemHS1  = DiemDAO.DiemCuaHocSinh(hs.getmahocsinh(),hk1,jcb_monhoc.getSelectedItem().toString().trim());
+                if(DiemHS1.size() > 0)
+                {
+                    for(int m = 0; m < DiemHS1.size(); m++ )
+                    {                       
+                        Diem diem = (Diem) DiemHS1.get(m);
+                        tdhk1 += diem.getdiemtbmon();
+                        
+                    }
+                }else monkt = false;                             
+                if (tdhk1 > 5.0 && monkt == true)
+                  sohsdat++;
+            }
+
+            int stt = i;
+            Object[] items = null;
+            if(lop.getsiso() == 0)
+            {
+                items = new Object[] {
+                    ++stt,
+                    lop.gettenlop(),
+                    lop.getsiso(),
+                    "",
+                    ""
+                };
+            }
+            else
+            {
+                DecimalFormat decimalFormat = new DecimalFormat("#.#####");
+                String tile = String.valueOf( decimalFormat.format( (float)sohsdat/lop.getsiso()*100)) +" %";
+                items = new Object[] {
+                    ++stt,
+                    lop.gettenlop(),
+                    lop.getsiso(),
+                    sohsdat,
+                    tile
+                };
+            }
+
+            model.addRow(items);
+        }
+
+        jtb_baocaomon.setModel(model);
+        jtb_baocaomon.setRowHeight(30);
+        jtb_baocaomon.getColumnModel().getColumn(0).setPreferredWidth(100);
+        jtb_baocaomon.getColumnModel().getColumn(1).setPreferredWidth(200);
+        jtb_baocaomon.getColumnModel().getColumn(2).setPreferredWidth(150);
+        jtb_baocaomon.getColumnModel().getColumn(3).setPreferredWidth(100);
+        jtb_baocaomon.getColumnModel().getColumn(4).setPreferredWidth(100);
+    }//GEN-LAST:event_btnTimActionPerformed
 
     /**
      * @param args the command line arguments
@@ -303,7 +450,6 @@ public class BaoCaoTongKetMon extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGiaoVu;
     private javax.swing.JButton btnTim;
     private javax.swing.JButton btninBangDiem;
     private javax.swing.JLabel jLabel1;
@@ -311,13 +457,11 @@ public class BaoCaoTongKetMon extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton jbtn_thoat;
-    private javax.swing.JTextField txtHienThiHocKy;
-    private javax.swing.JTextField txtHienThiMon;
+    private javax.swing.JComboBox jcb_hocky;
+    private javax.swing.JComboBox<String> jcb_monhoc;
+    private javax.swing.JTable jtb_baocaomon;
     private javax.swing.JTextField txtTim;
     // End of variables declaration//GEN-END:variables
 }

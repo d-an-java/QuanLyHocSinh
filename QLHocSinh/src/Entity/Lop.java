@@ -23,6 +23,12 @@ public class Lop implements java.io.Serializable{
         this.siso = 0;
         this.malop = "";
     }
+    public Lop(String tenlop, String malop,int khoi) {
+        this.tenlop = tenlop;
+        this.khoi =khoi;   
+        this.siso = 0;
+        this.malop = malop;
+    }
     public void setid(int id ) {
         this.id = id;
     }

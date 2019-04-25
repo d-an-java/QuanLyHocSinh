@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+     <class name="Entity.GiaoVu" table="giaovu" >
+        <id name="id" type="int">
+        <column name="id" length="11" />
+        <generator class="assigned" />
+        </id>
+         <property name="diemchuandatmon" type="float">
+        <column name="diemchuandatmon" length="10" />
+        </property>
+        <property name="tuoitoida" type="int">
+        <column name="tuoitoida" length="10" />
+        </property> 
+         <property name="tuoitoithieu" type="int">
+        <column name="tuoitoithieu" length="10" />
+        </property> 
+        
+    </class>
+
+</hibernate-mapping>

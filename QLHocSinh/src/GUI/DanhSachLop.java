@@ -180,11 +180,11 @@ public class DanhSachLop extends javax.swing.JFrame {
                         .addGap(32, 32, 32)
                         .addComponent(jtf_siso, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnTimKiem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(191, 191, 191)
+                .addGap(216, 216, 216)
                 .addComponent(btnInDanhSach1)
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
                 .addComponent(jbtn_thoat2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,10 +206,10 @@ public class DanhSachLop extends javax.swing.JFrame {
                                 .addComponent(jtf_siso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel4))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
+                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnInDanhSach1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbtn_thoat2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jbtn_thoat2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnInDanhSach1))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -286,10 +286,11 @@ public class DanhSachLop extends javax.swing.JFrame {
             List<HocSinh> listResultSV;
             String[] columns = new String [] {
                 "STT",
-                "Họ Tên",
-                "Lớp",
-                "TB Học Kỳ 1",
-                "TB Học Kỳ 2"
+                "Tên Học Sinh",
+                "Năm sinh",
+                "Giới Tính",
+                "Email",
+                "Địa chỉ"
             };
             model = new DefaultTableModel(null , columns);
 
