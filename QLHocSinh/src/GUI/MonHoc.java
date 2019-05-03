@@ -281,20 +281,36 @@ public class MonHoc extends javax.swing.JFrame {
          jtf_mamon.setText(null);
         jtf_tenmon.setText(null);         
      }
+     
+    boolean kiemtra()
+    {
+        boolean flag = false;
+        if(jtf_mamon.getText().trim().equals(""))
+            return flag;
+        else if(jtf_tenmon.getText().trim().equals(""))
+            return flag;
+        flag = true;
+        return flag;
+    }
     
     private void jtb_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtb_themActionPerformed
         // TODO add your handling code here:
-        
-        String mamon = jtf_mamon.getText().trim();
-        String tenmon = jtf_tenmon.getText();
-        Mon mon = new Mon(mamon, tenmon);
-        boolean result = MonDAO.themMon(mon);
-        if (result) {           
-            LoadData();
-            Moi();
-        } else {
-            JOptionPane.showMessageDialog(this, "Thêm thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
+        if(kiemtra())
+        {
+            String mamon = jtf_mamon.getText().trim();
+            String tenmon = jtf_tenmon.getText();
+            Mon mon = new Mon(mamon, tenmon);
+            boolean result = MonDAO.themMon(mon);
+            if (result) {           
+                LoadData();
+                Moi();
+            } else {
+                JOptionPane.showMessageDialog(this, "Thêm thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            }
         }
+        else 
+             JOptionPane.showMessageDialog(this, "Bạn Cần Nhập Đầy Đủ Thông Tín !", "Thông báo", JOptionPane.WARNING_MESSAGE);
+        
     
     }//GEN-LAST:event_jtb_themActionPerformed
 
@@ -307,16 +323,24 @@ public class MonHoc extends javax.swing.JFrame {
 
     private void jtb_suaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtb_suaActionPerformed
         // TODO add your handling code here:
-         String mamon = jtf_mamon.getText().trim();
-        String tenmon = jtf_tenmon.getText();
-        Mon mon = new Mon(mamon, tenmon);
-        boolean result = MonDAO.themMon(mon);
-        if (result) {           
-            LoadData();
-            Moi();
-        } else {
-            JOptionPane.showMessageDialog(this, "Thêm thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
+         if(kiemtra())
+        {
+             String mamon = jtf_mamon.getText().trim();
+            String tenmon = jtf_tenmon.getText();
+            Mon mon = new Mon(mamon, tenmon);
+            boolean result = MonDAO.capNhatMon(mon);
+            if (result) {           
+                LoadData();
+                Moi();
+            } else {
+                JOptionPane.showMessageDialog(this, "sưa thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            }
         }
+        else 
+             JOptionPane.showMessageDialog(this, "Bạn Cần Nhập Đầy Đủ Thông Tín !", "Thông báo", JOptionPane.WARNING_MESSAGE);
+        
+        
+       
     }//GEN-LAST:event_jtb_suaActionPerformed
 
     /**

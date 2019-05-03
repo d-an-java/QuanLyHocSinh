@@ -166,7 +166,6 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         jcb_mahocsinh = new javax.swing.JComboBox<String>();
         jbt_lammoi = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        btnGiaoVu = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jbt_inbangdiem = new javax.swing.JButton();
         jbt_thoat = new javax.swing.JButton();
@@ -457,7 +456,7 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
                         .addComponent(jtf_diemheso3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                         .addComponent(jcb_lop, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43)
                         .addComponent(jLabel4)
@@ -521,10 +520,6 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("BẢNG ĐIỂM MÔN HỌC");
 
-        btnGiaoVu.setBackground(new java.awt.Color(255, 0, 0));
-        btnGiaoVu.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnGiaoVu.setText("GIÁO VỤ");
-
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
         jbt_inbangdiem.setBackground(new java.awt.Color(255, 102, 0));
@@ -550,11 +545,11 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jbt_inbangdiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jbt_thoat, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jbt_thoat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbt_inbangdiem, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE))
                 .addGap(14, 14, 14))
         );
         jPanel6Layout.setVerticalGroup(
@@ -576,9 +571,7 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(267, 267, 267)
-                .addComponent(btnGiaoVu, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(372, 372, 372))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -590,10 +583,8 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(4, 4, 4)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(btnGiaoVu))
+                .addGap(6, 6, 6)
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -724,31 +715,51 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jtb_nhapdiemActionPerformed
 
+    boolean kiemtra ()
+    {
+        boolean flag = true;
+        if (jtf_diemheso1.getText().trim().equals(""))
+            flag = false;
+        if(jtf_diemheso2.getText().trim().equals(""))
+            flag = false;
+        if(jtf_diemheso2.getText().trim().equals(""))
+            flag = false;
+       return flag;
+             
+    };
+    
     private void jbt_suadiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbt_suadiemActionPerformed
         // TODO add your handling code here:
-        String malop = jcb_lop.getSelectedItem().toString();
-        String mamonhoc = jcb_monhoc.getSelectedItem().toString();
-        String mahocky = jcb_hocky.getSelectedItem().toString();
-        String mahocsinh = jcb_mahocsinh.getSelectedItem().toString();
-        
-        float diemheso1 = 0;
-        if (!jtf_diemheso1.getText().trim().equals(""))          
-            diemheso1 =  Float.parseFloat (jtf_diemheso1.getText());
-        float diemheso2 = 0;
-        if (!jtf_diemheso2.getText().trim().equals(""))          
-            diemheso2 =  Float.parseFloat (jtf_diemheso2.getText());
-        float diemheso3 = 0;
-        if (!jtf_diemheso3.getText().trim().equals(""))          
-            diemheso3 =  Float.parseFloat (jtf_diemheso3.getText());
-        float diemtbmon = (diemheso1+ diemheso2*2 + diemheso1*3)/6;
-        Diem diem = new Diem(malop, mamonhoc, mahocky, mahocsinh, diemheso1, diemheso2, diemheso3,diemtbmon);
-        boolean result = DiemDAO.capNhatDiem(diem);
-        if (result) {           
-            LoadData();
-//            lamMoi();
-        } else {
-            JOptionPane.showMessageDialog(this, "Thêm thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
+        if(kiemtra())
+        {
+             String malop = jcb_lop.getSelectedItem().toString();
+            String mamonhoc = jcb_monhoc.getSelectedItem().toString();
+            String mahocky = jcb_hocky.getSelectedItem().toString();
+            String mahocsinh = jcb_mahocsinh.getSelectedItem().toString();
+
+            float diemheso1 = 0;
+            if (!jtf_diemheso1.getText().trim().equals(""))          
+                diemheso1 =  Float.parseFloat (jtf_diemheso1.getText());
+            float diemheso2 = 0;
+            if (!jtf_diemheso2.getText().trim().equals(""))          
+                diemheso2 =  Float.parseFloat (jtf_diemheso2.getText());
+            float diemheso3 = 0;
+            if (!jtf_diemheso3.getText().trim().equals(""))          
+                diemheso3 =  Float.parseFloat (jtf_diemheso3.getText());
+            float diemtbmon = (diemheso1+ diemheso2*2 + diemheso1*3)/6;
+            Diem diem = new Diem(malop, mamonhoc, mahocky, mahocsinh, diemheso1, diemheso2, diemheso3,diemtbmon);
+            boolean result = DiemDAO.capNhatDiem(diem);
+            if (result) {           
+                LoadData();
+    //            lamMoi();
+            } else {
+                JOptionPane.showMessageDialog(this, "Sửa thất bại !", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            }
         }
+        else
+            JOptionPane.showMessageDialog(this, "Bạn Cần Nhập Dầy Đủ Thông Tin Điểm !", "Thông báo", JOptionPane.WARNING_MESSAGE);
+        
+       
     }//GEN-LAST:event_jbt_suadiemActionPerformed
 
     private void jrb_mahocsinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jrb_mahocsinhMouseClicked
@@ -925,27 +936,27 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
     private void jtf_diemheso1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_diemheso1KeyTyped
         // TODO add your handling code here:
         char  c =evt.getKeyChar();
-        if(!(Character.isDigit(c)  || (c== KeyEvent.VK_BACK_SPACE) || c== KeyEvent.VK_DELETE ))
-            evt.consume();
-        if (jtf_diemheso1.getText().length() >= 3 ) // limit textfield to 3 characters
+//        if(!(Character.isDigit(c)  || (c== KeyEvent.VK_BACK_SPACE) || c== KeyEvent.VK_DELETE ))
+//            evt.consume();
+        if (jtf_diemheso1.getText().length() >= 4 ) // limit textfield to 3 characters
             evt.consume(); 
     }//GEN-LAST:event_jtf_diemheso1KeyTyped
 
     private void jtf_diemheso2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_diemheso2KeyTyped
         // TODO add your handling code here:
         char  c =evt.getKeyChar();
-        if(!(Character.isDigit(c)  || (c== KeyEvent.VK_BACK_SPACE) || c== KeyEvent.VK_DELETE ))
-            evt.consume();
-        if (jtf_diemheso2.getText().length() >= 3 ) // limit textfield to 3 characters
+//        if(!(Character.isDigit(c)  || (c== KeyEvent.VK_BACK_SPACE) || c== KeyEvent.VK_DELETE ))
+//            evt.consume();
+        if (jtf_diemheso2.getText().length() >= 4 ) // limit textfield to 3 characters
             evt.consume(); 
     }//GEN-LAST:event_jtf_diemheso2KeyTyped
 
     private void jtf_diemheso3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_diemheso3KeyTyped
         // TODO add your handling code here:
         char  c =evt.getKeyChar();
-        if(!(Character.isDigit(c)  || (c== KeyEvent.VK_BACK_SPACE) || c== KeyEvent.VK_DELETE ))
-            evt.consume();
-        if (jtf_diemheso3.getText().length() >= 3 ) // limit textfield to 3 characters
+//        if(!(Character.isDigit(c)  || (c== KeyEvent.VK_BACK_SPACE) || c== KeyEvent.VK_DELETE ))
+//            evt.consume();
+        if (jtf_diemheso3.getText().length() >= 4 ) // limit textfield to 3 characters
             evt.consume(); 
     }//GEN-LAST:event_jtf_diemheso3KeyTyped
 
@@ -985,7 +996,6 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGiaoVu;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

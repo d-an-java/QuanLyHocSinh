@@ -65,7 +65,6 @@ public class HoSoHocSinh extends javax.swing.JFrame {
         jtf_mahocsinhtk = new javax.swing.JTextField();
         jbtn_timkiem = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jbt_sua = new javax.swing.JButton();
         jbt_xoa = new javax.swing.JButton();
@@ -211,15 +210,6 @@ public class HoSoHocSinh extends javax.swing.JFrame {
                     .addComponent(jbt_lammoi, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
-
-        jButton5.setBackground(new java.awt.Color(255, 0, 0));
-        jButton5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton5.setText("Giáo Vụ");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -406,18 +396,17 @@ public class HoSoHocSinh extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(378, Short.MAX_VALUE)
                 .addComponent(jLabel6)
-                .addGap(316, 316, 316)
-                .addComponent(jButton5)
-                .addContainerGap())
+                .addGap(405, 405, 405))
             .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton5)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel6)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -477,7 +466,7 @@ public class HoSoHocSinh extends javax.swing.JFrame {
     
     private void jbt_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbt_themActionPerformed
         // TODO add your handling code here:
-        String malop =  jcb_lop.getSelectedItem().toString();
+        String malop =  jcb_lop.getSelectedItem().toString().trim();
         List<Lop> mLop = LopDAO.layDanhSachLop(malop);
         int mkhoi = KhoiDAO.LaySiSoHSToiDa(mLop.get(0).getkhoi());
         if(mLop.size() > 0)
@@ -487,13 +476,19 @@ public class HoSoHocSinh extends javax.swing.JFrame {
                 int siso = mLop.get(0).getsiso();
                 if(siso < mkhoi)
                 {
-                    String hoten = jtf_hoten.getText();
-                    String diachi = jtf_diachi.getText();
-                    String email = jtf_email.getText();
-                    if(email.indexOf('@') < 0)
+                    String hoten = jtf_hoten.getText().trim();
+                    String diachi = jtf_diachi.getText().trim();
+                    String email = jtf_email.getText().trim();
+                    
+                    if(hoten.equals(""))
+                        JOptionPane.showMessageDialog(this, "Bạn Cần Nhập Họ Tên", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                    
+                    else if(email.indexOf('@') < 0)
                         JOptionPane.showMessageDialog(this, "Email không hợp lệ", "Thông báo", JOptionPane.WARNING_MESSAGE);
                     else if(email.indexOf('.') < 0)
-                        JOptionPane.showMessageDialog(this, "Email không hợp lệ", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "Email không hợp lệ", "Thông báo", JOptionPane.WARNING_MESSAGE);                                       
+                    else if(diachi.equals(""))
+                        JOptionPane.showMessageDialog(this, "Bạn Cần Nhập Địa Chỉ", "Thông báo", JOptionPane.WARNING_MESSAGE);
                     else {
                         SimpleDateFormat sdft = new SimpleDateFormat("dd/MM/yyyy");
                         String ngaysinh = sdft.format(jdc_ngaysinh.getDate());//select date 
@@ -545,9 +540,15 @@ public class HoSoHocSinh extends javax.swing.JFrame {
                                     String mahocsinh = nam.substring(2)+ malop.substring(0, 2) + malop.substring(2 + 1) +  mahs ;     
                                     HocSinh hs = new HocSinh(hoten, ngaysinh, gioitinh, diachi, email, malop, mahocsinh);
                                     boolean result = HocSinhDAO.themHocSinh(hs);
-                                    if (result) {           
-                                        LoadData();
-                                        lamMoi();
+                                    if (result) {   
+                                         boolean CNLop = LopDAO.capSiSoLop(malop);
+                                        if(CNLop)
+                                        {
+                                            LoadData();
+                                            lamMoi();
+                                        }else
+                                            JOptionPane.showMessageDialog(this, "Cập Nhật Sỉ Số Lớp Thất Bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
+
                                     } else {
                                         JOptionPane.showMessageDialog(this, "Thêm thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
                                     }
@@ -567,10 +568,6 @@ public class HoSoHocSinh extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(this, "Thêm thất bại, Vui lòng kiểm trả  lại thông tin", "Thông báo", JOptionPane.WARNING_MESSAGE);
                  
     }//GEN-LAST:event_jbt_themActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jbtn_thoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_thoatActionPerformed
         // TODO add your handling code here:
@@ -766,7 +763,6 @@ public class HoSoHocSinh extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

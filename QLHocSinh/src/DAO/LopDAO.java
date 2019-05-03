@@ -98,6 +98,27 @@ public class LopDAO {
         }
     }
     
+     // Tang si so
+    public static boolean capSiSoLop(String mlop) {
+        List<Lop> mh = LopDAO.layDanhSachLop(mlop);
+       if(mh.size() < 1)
+           return false;
+        mh.get(0).setsiso(mh.get(0).getsiso()+1);
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            session.beginTransaction();
+            session.update(mh.get(0));
+            session.getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+            System.out.println(e);
+            return false;
+        } finally {
+            session.close();
+        }
+    }
+    
     public static boolean xoaLop(String malop) {
        List<Lop> mh = LopDAO.layDanhSachLop(malop);
        if(mh == null)
