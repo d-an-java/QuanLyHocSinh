@@ -691,28 +691,43 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
         String mahocky = jcb_hocky.getSelectedItem().toString();
         String mahocsinh = jcb_mahocsinh.getSelectedItem().toString();
         
-        float diemheso1 = 0;
-        if (!jtf_diemheso1.getText().trim().equals(""))          
-            diemheso1 =  Float.parseFloat (jtf_diemheso1.getText());
-        float diemheso2 = 0;
-        if (!jtf_diemheso2.getText().trim().equals(""))          
-            diemheso2 =  Float.parseFloat (jtf_diemheso2.getText());
-        float diemheso3 = 0;
-        if (!jtf_diemheso3.getText().trim().equals(""))          
-            diemheso3 =  Float.parseFloat (jtf_diemheso3.getText());
-        float diemtbmon = (diemheso1+ diemheso2*2 + diemheso1*3)/6;
-//        if(diemheso1 >0 && diemheso2 >0 && diemheso3 >0)
-//            diemtbmon = (diemheso1+ diemheso2*2 + diemheso1*3)/6;
-//        else if (diemheso1 >0 && diemheso2 >0)
-//            diemtbmon = (diemheso1+ diemheso2*2 + diemheso1*3)/6;
-        Diem diem = new Diem(malop, mamonhoc, mahocky, mahocsinh, diemheso1, diemheso2, diemheso3,diemtbmon);
-        boolean result = DiemDAO.themDiem(diem);
-        if (result) {           
-            LoadData();
-//            lamMoi();
-        } else {
-            JOptionPane.showMessageDialog(this, "Thêm thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
+        if(Integer.parseInt(jtf_diemheso1.getText().trim()) < 0 )
+            JOptionPane.showMessageDialog(this, "Điểm 15 phút không được nhập điểm âm !", "Thông báo", JOptionPane.WARNING_MESSAGE);
+        else if(Integer.parseInt(jtf_diemheso1.getText().trim()) > 10 )
+            JOptionPane.showMessageDialog(this, "Điểm 15 phút không được nhập điểm lớn hơn 10!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+        else if(Integer.parseInt(jtf_diemheso2.getText().trim()) < 0 )
+            JOptionPane.showMessageDialog(this, "Điểm 1 tiết Không được nhập điểm âm !", "Thông báo", JOptionPane.WARNING_MESSAGE);
+        else if(Integer.parseInt(jtf_diemheso2.getText().trim()) > 10 )
+            JOptionPane.showMessageDialog(this, "Điểm 1 tiết Không được nhập điểm lớn hơn 10!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+        else  if(Integer.parseInt(jtf_diemheso3.getText().trim()) < 0 )
+            JOptionPane.showMessageDialog(this, "Điểm thi Không được nhập điểm âm !", "Thông báo", JOptionPane.WARNING_MESSAGE);
+        else if(Integer.parseInt(jtf_diemheso3.getText().trim()) > 10 )
+            JOptionPane.showMessageDialog(this, "Điểm thi Không được nhập điểm lớn hơn 10!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+        else {
+            float diemheso1 = 0;
+            if (!jtf_diemheso1.getText().trim().equals(""))          
+                diemheso1 =  Float.parseFloat (jtf_diemheso1.getText());
+            float diemheso2 = 0;
+            if (!jtf_diemheso2.getText().trim().equals(""))          
+                diemheso2 =  Float.parseFloat (jtf_diemheso2.getText());
+            float diemheso3 = 0;
+            if (!jtf_diemheso3.getText().trim().equals(""))          
+                diemheso3 =  Float.parseFloat (jtf_diemheso3.getText());
+            float diemtbmon = (diemheso1+ diemheso2*2 + diemheso1*3)/6;
+    //        if(diemheso1 >0 && diemheso2 >0 && diemheso3 >0)
+    //            diemtbmon = (diemheso1+ diemheso2*2 + diemheso1*3)/6;
+    //        else if (diemheso1 >0 && diemheso2 >0)
+    //            diemtbmon = (diemheso1+ diemheso2*2 + diemheso1*3)/6;
+            Diem diem = new Diem(malop, mamonhoc, mahocky, mahocsinh, diemheso1, diemheso2, diemheso3,diemtbmon);
+            boolean result = DiemDAO.themDiem(diem);
+            if (result) {           
+                LoadData();
+                lamMoi();
+            } else {
+                JOptionPane.showMessageDialog(this, "Thêm thất bại", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            }
         }
+        
     }//GEN-LAST:event_jtb_nhapdiemActionPerformed
 
     boolean kiemtra ()
@@ -736,8 +751,20 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
             String mamonhoc = jcb_monhoc.getSelectedItem().toString();
             String mahocky = jcb_hocky.getSelectedItem().toString();
             String mahocsinh = jcb_mahocsinh.getSelectedItem().toString();
-
-            float diemheso1 = 0;
+             if(Integer.parseInt(jtf_diemheso1.getText().trim()) < 0 )
+                JOptionPane.showMessageDialog(this, "Điểm 15 phút không được nhập điểm âm !", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            else if(Integer.parseInt(jtf_diemheso1.getText().trim()) > 10 )
+                JOptionPane.showMessageDialog(this, "Điểm 15 phút không được nhập điểm lớn hơn 10!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            else if(Integer.parseInt(jtf_diemheso2.getText().trim()) < 0 )
+                JOptionPane.showMessageDialog(this, "Điểm 1 tiết Không được nhập điểm âm !", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            else if(Integer.parseInt(jtf_diemheso2.getText().trim()) > 10 )
+                JOptionPane.showMessageDialog(this, "Điểm 1 tiết Không được nhập điểm lớn hơn 10!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            else  if(Integer.parseInt(jtf_diemheso3.getText().trim()) < 0 )
+                JOptionPane.showMessageDialog(this, "Điểm thi Không được nhập điểm âm !", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            else if(Integer.parseInt(jtf_diemheso3.getText().trim()) > 10 )
+                JOptionPane.showMessageDialog(this, "Điểm thi Không được nhập điểm lớn hơn 10!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            else {
+                 float diemheso1 = 0;
             if (!jtf_diemheso1.getText().trim().equals(""))          
                 diemheso1 =  Float.parseFloat (jtf_diemheso1.getText());
             float diemheso2 = 0;
@@ -751,10 +778,11 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
             boolean result = DiemDAO.capNhatDiem(diem);
             if (result) {           
                 LoadData();
-    //            lamMoi();
+                lamMoi();
             } else {
                 JOptionPane.showMessageDialog(this, "Sửa thất bại !", "Thông báo", JOptionPane.WARNING_MESSAGE);
             }
+            }          
         }
         else
             JOptionPane.showMessageDialog(this, "Bạn Cần Nhập Dầy Đủ Thông Tin Điểm !", "Thông báo", JOptionPane.WARNING_MESSAGE);
@@ -864,7 +892,7 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
             }
           
             document.close();
-
+            JOptionPane.showMessageDialog(this, "In Hoàn Tất", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         } catch (DocumentException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {
@@ -940,6 +968,7 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
 //            evt.consume();
         if (jtf_diemheso1.getText().length() >= 4 ) // limit textfield to 3 characters
             evt.consume(); 
+//     
     }//GEN-LAST:event_jtf_diemheso1KeyTyped
 
     private void jtf_diemheso2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_diemheso2KeyTyped
@@ -949,6 +978,7 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
 //            evt.consume();
         if (jtf_diemheso2.getText().length() >= 4 ) // limit textfield to 3 characters
             evt.consume(); 
+      
     }//GEN-LAST:event_jtf_diemheso2KeyTyped
 
     private void jtf_diemheso3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_diemheso3KeyTyped
@@ -958,6 +988,7 @@ public class BangDiemMonHoc extends javax.swing.JFrame {
 //            evt.consume();
         if (jtf_diemheso3.getText().length() >= 4 ) // limit textfield to 3 characters
             evt.consume(); 
+        
     }//GEN-LAST:event_jtf_diemheso3KeyTyped
 
     /**
