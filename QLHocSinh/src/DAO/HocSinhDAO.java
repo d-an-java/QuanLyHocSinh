@@ -23,7 +23,7 @@ public class HocSinhDAO {
         List<HocSinh> dsHocSinh = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        String hql = "from HocSinh ORDER BY mahocsinh,lop ";
+        String hql = "from HocSinh ORDER BY lop,mahocsinh ";
         Query query = session.createQuery(hql);
         dsHocSinh = query.list();
         session.close();
@@ -67,7 +67,7 @@ public class HocSinhDAO {
         List<HocSinh> dsHocSinh = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        String hql = "select hs from HocSinh  as  hs ,Lop  as  lp where hs.lop = lp.malop and lp.tenlop like:tenlop  ";
+        String hql = "select hs from HocSinh  as  hs ,Lop  as  lp where hs.lop = lp.malop and( lp.tenlop like:tenlop or lp.malop like:tenlop  )";
         Query query = session.createQuery(hql);
         query.setParameter("tenlop", "%"+tenlop+"%"); 
         dsHocSinh = query.list();

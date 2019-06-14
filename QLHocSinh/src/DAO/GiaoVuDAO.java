@@ -7,6 +7,8 @@ package DAO;
 
 import Entity.GiaoVu;
 import Util.HibernateUtil;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -38,6 +40,54 @@ public class GiaoVuDAO {
         session.close();
         return dsGiaoVu;
         
+    }
+     
+    //lay so tuoi quy dinh
+     public static String laySoTuoiToiThieu()
+    {
+        String tuoi = "";
+        List<GiaoVu> dsGiaoVu = null;
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        String hql = "from GiaoVu";
+        Query query = session.createQuery(hql);
+        dsGiaoVu = query.list();
+        session.close();
+        int t = 1999;
+        if (dsGiaoVu.size() > 0){
+            t = dsGiaoVu.get(0).gettuoitoithieu();
+            Date date = new Date();
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY");
+            String nam = simpleDateFormat.format(date).toUpperCase();           
+            t = Integer.parseInt(nam) - t;
+        }
+                 
+        tuoi  = String.valueOf(t);
+        return tuoi;
+    }
+     
+      //lay so tuoi quy dinh
+     public static String laySoTuoiToiDa()
+    {
+        String tuoi = "";
+        List<GiaoVu> dsGiaoVu = null;
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        String hql = "from GiaoVu";
+        Query query = session.createQuery(hql);
+        dsGiaoVu = query.list();
+        session.close();
+        int t = 1999;
+        if (dsGiaoVu.size() > 0){
+            t = dsGiaoVu.get(0).gettuoitoida();
+            Date date = new Date();
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYY");
+            String nam = simpleDateFormat.format(date).toUpperCase();           
+            t = Integer.parseInt(nam) - t;
+        }
+                 
+        tuoi  = String.valueOf(t);
+        return tuoi;
     }
         
      // sửa
